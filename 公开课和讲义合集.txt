@@ -1,0 +1,414 @@
+高级前端专家如何做性能优化？特邀字节大佬细数飞书应用优化细节【超详细内培版】
+直播回放：https://bcsnv.xetlk.com/sl/3abIlI
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/NCzEdCMwFowJUQxdMITclKzJnIc   密码：3#3534B2
+
+高级前端专家如何做性能优化？特邀字节大佬细数飞书应用优化细节（第二弹）【内部培训版】
+直播回放：https://bcsnv.xetlk.com/sl/3JS01w
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/RxXWdW8RGoln0KxXXiicCFyUn9c   密码：7916&9Z3
+
+【前端性能优化核心点全面解析，高级前端专家传授涨薪高分面能力】，
+直播回放：https://bcsnv.xetslk.com/sl/1Bio1u
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/NdqqdIX4hoQiIsxR2fecr7ZLnsc?from=from_copylink   密码：6&a25855
+
+字节大佬带你吃透大厂算法题
+直播地址：https://bcsnv.xetlk.com/sl/3SZ96Z
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/MNuadGrR8okG4PxmF8ocz07anjc   密码：556r31@3
+
+字节大佬带你弯道超车，深入剖析大厂面试真题~
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Gb0adTn45oJ46rxsKWscSnvjn3b   密码：12&14n15
+回放链接：https://bcsnv.xetlk.com/sl/1RyfXs
+
+项目没有难点亮点？字节大佬带你前端项目弯道超车
+直播地址：https://bcsnv.xetlk.com/sl/2gQSO8
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Nb1RdWZf4o59naxcUBFcRggbnnh?from=from_copylink   密码：49634@P7
+
+备战金九银十，进阶大前端，涨薪全突破！
+回放链接:https://bcsnv.xetlk.com/sl/l4FJJ
+讲义文档链接:https://u19tul1sz9g.feishu.cn/docx/T2TCdxlrqopwLUxZlAtcdSuonzg   密码：578&91v2
+
+高级前端专家如何做项目架构与工程化设计？
+特邀字节大佬细数字节开源项目架构细节【超详细内培版】
+直播回放：https://bcsnv.xetlk.com/sl/2UJ0RD
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/M5xjdhj5HoBg2XxB3d9cp929nFg   密码：947g611#
+
+
+小小微前端，轻松拿捏，特邀字节大佬开讲微前端架构与源码剖析【内部培训版】
+直播地址：https://bcsnv.xetlk.com/sl/WkSKc
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Cu4Bdw8wRolXHzxyqnAcwkuWnwc   密码：3954@12K
+
+
+高级前端专家如何做性能优化？特邀字节大佬细数飞书应用优化细节【超详细内培版】第二弹
+直播地址：https://bcsnv.xetlk.com/sl/3JS01w
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/RxXWdW8RGoln0KxXXiicCFyUn9c   密码：7916&9Z3
+
+前端破局 AI 应用开发，特邀字节大佬分享字节系 AI 场景落地应用与 AI 引擎编排流程【内部培训版】
+直播地址：https://bcsnv.xetlk.com/sl/2eyX1h
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/SBf8dcstdo0wn8xwsjLc5xkPnch   密码：256#K788
+
+React18 源码深度剖析，字节面试官教你轻松拿捏高级前端专家面试框架原理题
+直播地址：https://bcsnv.xetlk.com/sl/3zodJo
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Yp3mdaqido6PFfxxiL8c0hSJnQf   密码：96&2F377
+
+
+☄ Vue3源码深度剖析，字节面试官教你轻松拿捏高级前端专家面试框架原理题
+直播地址：https://bcsnv.xetlk.com/sl/30ZDQF
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/UdN8d6YJ3oQmG4xeFpxcMaP4nQe   密码：15g6819#
+
+Vite 构建过程与源码深度剖析，你怎么也想不到一线大厂工程化构建面试会问这么深！
+直播地址：https://bcsnv.xetlk.com/sl/4FjrDx
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/WxavdKXyCowyW4xwJ03cQnJYn3b   密码：3772&11G
+
+
+脚手架/CLI 工具原理与开发实践，特邀字节前端专家带你体悟大厂团队基建与研发工作流
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/BLp4dZKN1o3KCVx4rOgcCG8anah   密码：521311J&
+直播回放：https://bcsnv.xetlk.com/sl/2IevYR
+
+
+webpack  原理深度解读与面试专项突击，字节面试官带你手撕难缠打包构建面试原理题
+录播地址：https://bcsnv.xetlk.com/sl/3TEdZ2
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/C8RtdOTMwo28Qfx1qDKcN8zjnbg   密码：6#5456A1
+
+冲击中大厂筹备与涨薪突击最优方案，特邀字节面试官带你体验大厂面试全流程
+直播链接：https://bcsnv.xetlk.com/sl/UaysE
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/C4hSd5E8roJTeUxqZzsclyaSnVf?from=from_copylink   密码：94173@Q5
+
+字节面试专场——中厂在职学员冲击大厂 30K+，看看面试官如何评价
+直播回放：https://bcsnv.xetslk.com/sl/4jw8Dt
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/UwIPdt74xoSjSOxy4QpcsCMenDh   密码：221&J875
+
+前端性能与异常监控平台全链路设计与实践，字节架构师：掌握这整套拿个 40K+ 不在话下吧
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/J9lgdKHP7oVye1xZMEKchT4vnkb?from=from_copylink   密码：59&4N866
+直播回放：https://bcsnv.xetlk.com/sl/4v1VqI
+
+【大数据可视化引擎与数字孪生平台设计浅析，字节大佬：一起来剖析 DataWind 数据洞察平】
+直播回放：https://bcsnv.xetlk.com/sl/2ryMX9i
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Vv8edlIhvo8gE0xDsIwcxy8UnWc   密码：53&2711r
+
+🌈 服务端渲染（SSR）与前后端同构技术原理揭秘，字节前端专家带你光速进阶全栈
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/IfB6dpWlZoCAGox0B5HcUfTdnid?from=from_copylink   密码：9&2622a5
+直播回放：https://bcsnv.xetlk.com/sl/1zBeXg
+
+【Babel 与编译原理详解，字节高级前端专家带你从零实现飞书表格公式执行器】，直播回放：https://bcsnv.xetlk.com/sl/2EytNe
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/P5tmdJ6sxolfHfxZTzHckRTknQe   密码：45431F@6
+
+【Nest 服务端开发与原理深度剖析，《NestJS 实战》作者带你领略框架设计之美】
+直播回放：https://bcsnv.xetlk.com/sl/3gTMZk
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Z5DmdwdUQo2dhdxz1xDcRG1Lnkh   密码：1582R82#
+
+Taro、Tauri 多端开发实践与原理剖析，《Taro 多端开发权威指南》作者带你悟透多端框架原理
+直播回放：https://bcsnv.xetlk.com/sl/1ioL0x
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/IlArdMQQGoNTuZx0VlScZMa4n1b   密码：8&1797P5
+
+【Ant Design 组件库架构设计与开发实践，高级前端专家带你掌握基建面试技巧】
+直播回放：https://bcsnv.xetlk.com/sl/JM3Zl
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/SbgVd8cmroOnoxxI1x7cMQIjnsb?from=from_copylink   密码：29&g2744
+
+飞书文档协同编辑器技术揭秘，特邀字节架构师分享富文本编辑器方案细节
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/R7n2dyFmnoS3SJxxz0wcTrGonoe   密码：6541j@45
+直播回放https://e2gaa.xetslk.com/sl/4kbo9s
+
+【Notion 与飞书文档协同方案精析，字节前端专家帮你补充架构师级项目重难点】
+直播回放：https://bcsnv.xetlk.com/sl/3c8oyB
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/GjuxdUY9zoMcPcxWLvdcWBZenTh   密码：s925#767
+
+【ESLint 前端编码规范化与原理剖析，特邀字节大佬分享团队代码质量把控细节】
+直播回放：https://bcsnv.xetlk.com/sl/2eZ0Uc
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Mev7dswq4oQ9KkxpjarcYqnXnUe?from=from_copylink   密码：2V1@2391
+
+🚢 Docker 入门与服务编排进阶，字节前端专家带你光速掌握 CI/CD 运维技能
+直播回放：https://bcsnv.xetlk.com/sl/16xKk1
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Tb82dmZW3oYeN6xwxg8cJ0nOnOh   密码：18a@4177🪓 Typescript 进阶与高分技巧，字节面试官细数常问面试题与优秀开源项目最佳实践
+直播回放：https://bcsnv.xetlk.com/sl/2giMRh
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/NOqxdPzE5opSu2xclf6cnyFZn8g   密码：52F719&4
+
+【css、cssinjs、tailwindcss 核心用法与进阶，字节系产品样式方案评审与最佳实践】，
+直播回放：https://bcsnv.xetlk.com/sl/CTC2w
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/ZmuGdemgeox9HrxbuCZcnMTvnug   密码：52966f#4
+
+🪂 前端单测、集成测试与端到端测试方案全面解析，字节大佬分享字节系产品分场景测试最佳实践
+直播回放：https://bcsnv.xetlk.com/sl/1ogOPS
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/CAyOdUDvBorZyKxdsXbcNgbTnTf   密码：&J543136
+
+基于 pnpm monorepo 大厂项目工程化设计，字节架构师传授多场景项目架构要诀
+直播回放：https://bcsnv.xetlk.com/sl/4ky4eh
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/JXmydE044okvLZxKKZvcka1zn5e   密码：P#184283
+
+vite、rollup、tsup、tsc 打包构建工具详解，字节前端专家带你深入多业务构建方案
+直播回放：https://bcsnv.xetlk.com/sl/3jXMB4
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/II7adFsltoA2QdxSVgacTgUknoc   密码：12e8742@
+
+【企业级低代码平台核心需求与方案设计，字节前端专家带你精研产品业务与工程架构】
+直播回放：https://bcsnv.xetlk.com/sl/GNRco
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/KoEkdMH2XoZnVIxuBClcC4SLnVc   密码：147@a781
+
+飞书低代码物料体系与编排引擎设计，字节前端专家在线评审实现工程重难点
+直播回放：https://bcsnv.xetslk.com/sl/p0gcp飞书链接：https://u19tul1sz9g.feishu.cn/docx/EC9rduk0ioM6EpxwbcFcjo1xnSh   密码：3362p45#
+
+【前端智能体 Ollama + Deepseek AI 开发平台全链路设计与实践，特邀字节专家分享前端人高光时刻】
+直播回放：https://bcsnv.xetslk.com/sl/3Rt5lA
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/QxXfdLFEXoHaUOxr0SccljC7nkg?from=from_copylink   密码：3@5277L9
+
+【类扣子、Dify AI 应用引擎架构设计与实践，前端专家助你武装 AI 开发平台业务与架构思维】
+直播回放：https://bcsnv.xetslk.com/sl/D0ywp
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/ZqW4dMKKcoZNzpxcUWbcxMj9nmg   密码：X#272626
+
+【字节前端专家揭秘年包50w+进化公式，20个技术杠杆点×3个战略发展期×4种角色转换模式】，
+直播回放：https://bcsnv.xetslk.com/sl/4bqbj5
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/IQCbdUTrjohPJRxiiPPcJj6ynHF   密码：1t124@34
+
+【大厂前端工程化与编译原理详解，特邀字节大佬破译专家进阶密码】
+直播回放：https://bcsnv.xetslk.com/sl/3fpubd
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/UlBBdmyHMo2WMyxBjD2chM0cn0d   密码：78#i9338
+
+【Vite5 基础进阶与原理深度剖析，前端专家分享 bundleless 构建细节】
+直播回放：https://bcsnv.xetslk.com/sl/3d2FDW（本周三晚20：00）
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Kx5tdneROoZqQmxMEDvcMYD6nCg   
+密码：e1@75753
+
+【Webpack5 进阶与原理深度剖析，前端专家分享工程化构建打包与编译细节】
+直播回放：https://bcsnv.xetslk.com/sl/2Fodgr
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/UrDWdL1rco2MYAxrjCNc2eMenki   密码：27R7812@
+
+【飞书智能协同文档全链路设计与实践，字节高级前端专家传授百万年薪级项目重难点】
+直播回放：https://bcsnv.xetslk.com/sl/3VgbfS
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/LI7kduVRLo2POpxxV0GccgVXnN3   密码：7#A32783
+
+Typescript5 极速进阶与高级应用，前端专家盘点面试热点与最佳开源实践】
+直播回放：https://bcsnv.xetslk.com/sl/4505d1
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/BByHdN4shovP6UxazHLc0veJnvf?from=from_copylink   密码：21295M#7
+
+【前端性能异常监控与埋点平台全栈架构与实践，字节面试官：这差不多得有 60W+ 水平了！】，
+直播回放：https://bcsnv.xetslk.com/sl/2oW3xw
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/PutgdLrjIoIsZPxlkNccVqXfn8c   密码：5@72748t
+
+【飞书多维表千万行数据渲染优化奥秘，特邀前端专家分享云表格引擎全栈架构与实践】
+直播回放：https://bcsnv.xetslk.com/sl/44vI7Q（本周三晚20：00）    
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/LoDjdnEQGoWLdnxGE48cjqWunMb   密码：7B7&7752
+
+🍓 前端架构师必知 WebAssembly 极端性能优化方案，特邀高级前端专家分享顶级优化秘诀
+直播回放：https://bcsnv.xetslk.com/sl/2xPvb7
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/AFzzdRO9toGPkux6ci4czi6xnKe   密码：@898X439
+
+🍿 基于 ESLint 9 前端工程规范化最佳实践，高级前端专家助你晋升 Leader
+直播回放：https://e2gaa.xetslk.com/sl/2BnoQQ
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/EQC7dqRcjo7gbYxfbMMcKEpXnnR?from=from_copylink   密码：56y@6345
+
+🌀 巨石应用业务与 single-spa、qiankun 原理揭秘，高级前端专家带你深入微前端架构
+直播回放：https://e2gaa.xetslk.com/sl/1WGee9
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/EFUadwKTlosvwRxW1yWcV17Bnxf   密码：#376978e
+
+🛢️ AI 时代下服务端渲染（SSR）与前后端同构精析，高级前端专家带你深入极致性能方案
+直播回放：https://xvlbz.h5.xeknow.com/sl/2M75cd
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/GCsLd8oYpowSrxxJg7ac2AAIn2f   密码：2#V56789
+
+🪶 typescript、tsup、vite、rolldown 多场景构建方案深度解析，高级前端专家带你极速掌握打包构建重难点
+直播回放：https://e2gaa.xetslk.com/sl/1hZNMZ
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/YOuzdgLXxo6HwOxVuyBc6xnSnLf   密码：76e9@495
+
+🪺 Taro、React-Native、Electron 大前端开发方案精析，前端专家带你光速掌握多端框架
+直播回放：https://e2gaa.xetslk.com/sl/23lbZ5
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/B32ldo5ysoiedZxd0taczlN2nQb   密码：1317&59f
+
+🦤 Tailwind CSS 从使用进阶到源码剖析，高级前端专家助你重塑 CSS 开发范式
+回放链接：https://e2gaa.xetslk.com/sl/3I4Fwl
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/TZOndo762oU1buxyEyrcp2DInUf   密码：49227&1m
+
+👝 基于 yjs 智能文档、AI 代码编辑器、数字孪生编辑器协同实战，高级前端专家带你掌握百万年薪级项目架构亮点
+直播回放：https://e2gaa.hk.xet.citv.cn/sl/4mleZs
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/FEUMdqYZooicN8xqXzycyhlDn2f   密码：43M5262@
+
+🍾 三维可视化 Cesium、WebGL 进阶与实战，前端专家带你光速掌握数字孪生重难点
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/DNXed6ZpooKPT8xmaqDcqsJHnVe   密码：5&7m3378
+
+🏵️ 数字孪生 Threejs 与 WebGL 进阶实战，前端专家带你极速精通材质光阴影、着色器高级应用
+直播回放：https://e2gaa.xetslk.com/sl/3Jqw5M
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Hi4wd8rHpoGkT7xvzqycbIh1nGc   密码：91#q2287
+
+🐙 Vite 7 极速进阶与原理深度剖析，前端专家带你悟透新生代打包构建方案与工作流
+直播回放：https://e2gaa.hk.xet.citv.cn/sl/aalow
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Q52pdP5VdokcBsxPlrIcaz9VnVh   密码：13425P@7
+
+🎠 前端 AI 智能体类 Dify  AI 开发平台全链路设计与核心重难点，前端专家带你用 AI 业务经验错位竞争
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/CtdodPsooolIh5xFm5gcItmUnvf   密码：8j56414@
+回放链接：https://e2gaa.hk.xet.citv.cn/sl/1QxEJb
+
+Vue3 Vapor Mode 无虚拟 Dom 原理揭秘，高级前端专家带你掌握编译与运行时架构重难点
+直播回放：https://e2gaa.xetslk.com/sl/vsuZg
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/C2L9d8g2BoqXQHxpR7Tc9yHHnXc   密码：5b44#519
+
+🦗 前端专家必会类扣子  AI Agent 平台全链路架构设计与实践，高级前端专家助你借 AI 业务润色高分简历
+直播回放：https://e2gaa.hk.xet.citv.cn/sl/4lceaY
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Yx4xdRdUKoA9R7xSle3cbBuSnnL   密码：574191@C
+
+🚟 ESLint、Oxlint、Biome 工程规范工具链深度实践，高级前端专家带你掌握前端架构师面试进阶技巧
+回放：https://e2gaa.hk.xet.citv.cn/sl/kDalF
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/J04ld12eDoIoH3xYoC5caqgHnyf   密码：8379#25F
+
+📟 JavaScript 执行机制与 WebWorker 原理详解，前端专家带你掌握进阶性能优化细节
+直播回放：https://e2gaa.hk.xet.citv.cn/sl/3ZcWvN
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/F7WNdc0SwoHWb6xCqItcO16Rnwc   密码：3551i&67
+
+⛲ Typescript 进阶与类型体操实战，高级前端专家带你掌握框架级类型声明技巧
+直播回放：https://e2gaa.hk.xet.citv.cn/sl/3qZxpz
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/UeXTdBHAQoD6YjxMh1hcs58AnBc   密码：6x@63527
+
+🐗 Nodejs 全栈 AI 开发极速进阶实战，高级前端专家帮你补足前端 AI 面试重难点
+直播回放：https://e2gaa.hk.xet.citv.cn/sl/3Tc9Ya
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/ZPJUdIatYoIODwx0Z3wcLsaCn7b   密码：67v@7248
+
+前端中大厂 高薪求职秘籍【上】——全面技术储备进阶路线精析
+直播回放：https://e2gaa.xetslk.com/sl/2It399
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/P2dUdfbNoo0OQixXi7ycPxFSnvh   密码：@293154r
+
+前端中大厂 30K+ 高薪求职秘籍【中】——高价值项目重难点与场景题精析
+直播回放：https://e2gaa.hk.xet.citv.cn/sl/DviKX
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/A47xdqx6ZoahK0xPrqPcikSAnVc   密码：3@66576A
+
+前端中大厂 30K+ 高薪求职秘籍【下】——简历深度优化与高分面试方法论
+直播回放：https://e2gaa.xetslk.com/sl/3xw7ao
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/LCQrdbTjboAQycxURaXcLejYn3d   密码：1993&42F
+
+🦌 前端监控体系架构性能与异常监控平台全链路设计，40K+ 高薪前端专家架构思想与能力进阶
+直播回放：https://e2gaa.hk.xet.citv.cn/sl/1PJyeJ
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/NZnMdf1KLoB7sux5Iw4cQ5l2n2f   密码：V@277739
+
+🐌 Module Federation 微前端全新方案精析，字节系低代码体系与远程物料加载最佳实践
+直播回放：https://e2gaa.xetslk.com/sl/3kvkuY
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/CzSydzhDpogs5wxEur8cWo3yn1e   密码：7x8117#9
+
+🪄 Vite8 与 Rolldown 新兴构建工具链详解，高级前端专家带你体悟字节系构建打包最佳实践
+直播回放：https://e2gaa.xetslk.com/sl/B8l6O
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/UNyvd7dtmoOutwx44Pkcwjs5n6f   密码：&935678H
+
+🌾 基于 nestjs、langchain、tauri 大厂 AI 大前端应用全栈开发揭秘，字节面试官：这么全能的候选人很少见！
+直播回放：https://e2gaa.xetslk.com/sl/4o4HLo
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/GmWtdf7QQoxadqxoK9Acay0pncd   密码：59714Q3@
+
+🌿 基于 react-native、langchain、nestjs 类 deepseek App 全栈开发揭秘，字节面试官：百万年薪前端要求啥都会！
+直播回放：https://e2gaa.xetslk.com/sl/3CzdRn
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/VR9fdLKwnopTojxIC4vcb3Munsc   密码：1@69C159
+
+🌴 基于 electron、langgraph 大厂 AI 工作流编排应用架构揭秘，AI 前端全栈架构师高分项目重难点解析
+直播回放：https://e2gaa.xetslk.com/sl/1VJ7cG
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/SpRndJeino9v7exkkhgcazLqndf   密码：517B2@39
+
+前端监控 AI 智能化全链路大厂最佳实践，字节架构师：未来 AI 将完全取代初中级前后端开发
+直播回放：https://e2gaa.xetslk.com/sl/SGCfN
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Feq8dyeGEob755xF25wcfpmfn8g   密码：41J9253&
+
+🐝 AI 前端 BI 商业智能自动化分析引擎架构设计与实践，字节面试官：你的数据可视化开发经验已过时
+直播回放：https://e2gaa.xetslk.com/sl/YQd39
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/KGszdr6LOoWqUBxpSzvc8WJNnBd   密码：#58x4451
+
+🐘 AI 前端开发 Typescript、Zod 极速进阶与最佳实践，字节面试官：这是当下招聘 AI 全栈最基本要求
+直播回放：https://e2gaa.xetslk.com/sl/37bBdS
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/CKN4d6HkDoG3fNxqXKic7XNdnrb   密码：9#j36953
+
+🐨 Vite AI 前端工程智能化落地案例与架构精析，字节面试官：AI 已全面渗透到前端架构体系
+直播回放：https://e2gaa.xetslk.com/sl/rCxZw
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/QG0adqArHoYzDbxkvZ9cSFAOnJb   密码：U789#746
+
+🏓 Babel 进阶与前端 AI 编译器揭秘，字节面试官：50K+ 飞书表格公式 parser AI 重难点
+直播回放：https://e2gaa.xetslk.com/sl/xpjFy
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/GvkQdC4ORojg7VxlV13c0A1knqP   密码：9855#2g5
+
+AI 前端 UI 组件库架构设计与开发实战，字节面试官：说说基于 monorepo 架构前端基建 AI 应用场景
+直播回放：https://e2gaa.xetslk.com/sl/24BbiE
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/YKOrdx3Meo3I3yxTISzcAv7Xnbg   密码：393d1@92
+
+😱 前端性能与异常监控平台 AI 化全链路设计与实践，字节面试官：掌握这整套拿个 40K+ 问题不大
+直播回放：https://e2gaa.xetslk.com/sl/4kzBzh
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/XkY1dml25ozEvTxJfMucju2Anjc   密码：81u754@1
+
+🍼 基于 pnpm monorepo 大厂 AI 全栈工程化设计，高级前端专家传授高价值项目架构心法
+直播回放：https://e2gaa.xetslk.com/sl/3DvDv1
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/TaXMdJ6ynoHOTjxncLfc3Oo2nzc   密码：76884#N1
+
+🍜 字节产品前端极致性能优化最佳实践，飞书文档、飞书表格、飞书低代码优化重难点极速掌握
+直播回放：https://e2gaa.xetslk.com/sl/3I1FId
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/RkyfdnbaJodPeqxnIdVcHyPxnHb   密码：39967#3n
+
+🙏 大厂前端 Vibe Coding 实践与面试指南，字节面试官：初中级前端开发将由 AI 全线取代
+直播回放：https://e2gaa.xetslk.com/sl/1JPqM
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/K1VHdNmsNolK1oxYIKKcBDEanCc   密码：34791S8@
+
+🦸‍♂️ Next.js AI Agents 开发最佳实践与面试指南，字节面试官：我们只要有 AI 开发经验的前端
+直播回放：https://e2gaa.xetslk.com/sl/3vOLVq
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/MpNgdxOM1oyYpPxaUP7ckf72nyh   密码：3@9Y1548
+
+👨‍🎤 Nuxt.js AI Agents 开发最佳实践与面试指南，字节面试官：有 AI 开发经验的前端上分
+直播回放：https://e2gaa.xetslk.com/sl/1rGb7L
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/H9SmdboM8om6cTx4chcctFuknrh   密码：#34Z6836
+
+🦇 基于 Typescript AI Agents 框架揭秘，前端专家就当手搓 langgraph 源码！
+直播回放：https://e2gaa.xetslk.com/sl/3cU0zn
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/YJ2YdlMGiofHFfxC0PBcpabtnFf   密码：1f96924&
+
+🍝 前端工作流编辑器 + AI Agent 引擎架构实践，高级前端专家详解智能体引擎面试精要
+直播回放：https://e2gaa.xetslk.com/sl/2ndj0W
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/ZEYTd2g7VosAsdx8E2dcpZ9GnXg   密码：8#165F49
+
+🦞 openclaw 系统级 AI 智能体架构与实现详解，百万年薪前端全栈 AI 修炼
+直播回放：https://e2gaa.xetslk.com/sl/3iU6Hd
+https://u19tul1sz9g.feishu.cn/docx/PBHtdbIPRodFTbxbZ84cyMaunrr  密码：6728#5m1
+
+🌼 类 codex 编程智能体架构与实现详解，前端架构师 AI 提效战略蓝图
+直播回放：https://e2gaa.xetslk.com/sl/1pBGv8
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/BzUkdjegFoAlpxxqBnvckiQhnCc   密码：829633@v
+
+
+🦞 Langchain.js AI 智能体架构与开发指南，前端架构师专讲 openclaw 引擎实现
+直播回放：https://e2gaa.xetslk.com/sl/32HHNk
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/OSKFd1BfKoA3fWxrY7UcV1c1nSd   密码：566@z159
+
+🦀 LangGraph.js AI Agent 开发与架构指南，前端架构师专讲复杂智能体引擎实现
+直播回放：https://e2gaa.xetslk.com/sl/2wUk8
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/EcYIdYPr1oQPlyxvqWcc5mTvnzd   密码：#233e273
+
+🦑 Deep Agents 企业级通用智能体开发精析，前端专家级进阶全栈 AI 路径拆解
+直播回放：https://e2gaa.xetslk.com/sl/3lbS2v
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/XYhAdpebBo3ZdHxNawxcnacWn3g   密码：51n#1263
+
+⛽ Vite 8 + AI 前端工程化落地精析，高级前端专家带你用 AI 重构前端架构体系
+直播回放：https://e2gaa.xetslk.com/sl/Yqhjg
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/F9Tad1932oilloxVFIHcJdIUnVe   密码：21#495K2
+
+Claude Code 智能体架构与源码详解，AI 前端架构师编程 Agent 极速进阶
+直播回放：https://e2gaa.xetslk.com/sl/3bRhVh
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/KztrdX6Idoln0fxkmkpcaZkXnGc   密码：4@5V6956
+
+AI 前端面试与招聘最新风向解析，技术专家精讲 AGETNS、skils、mcp 完备体系
+直播回放：https://e2gaa.xetslk.com/sl/1woQvR
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/EgmUdcAmUoL8Vzx82czcA0AVnog   密码：5D1@7387
+
+D2C 类 Figma AI 企业级最新设计研发提效方案精析，架构师专讲设计、无代码、Vibe Coding 完整链路实践
+直播回放：https://e2gaa.xetslk.com/sl/1KJOu2
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Qrd5dNP7NoOlhHxq4YTcyoHkn6b   密码：841R@434
+
+初中级前端要么失业，要么进阶 AI Agent 全栈开发！架构师详解最佳学习路线
+直播回放：https://e2gaa.xetslk.com/sl/1ns4xd
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/FojKdyoT4o4SnxxusvFcVsKynpc   密码：v414&589
+
+基于 Nest、LangChain 前端进阶 AI 全栈指南，字节面试官：没纯前端坑位了
+直播回放：https://e2gaa.xetslk.com/sl/1yERZA
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/MlUQdNyOTorBeDxCNW5cGRPRnle   密码：&1a42865
+
+大厂前端 AI 工程化与组件库基建最佳实践，架构师带你速通 mcp、skill、vibecoding 前端神技
+直播回放：https://e2gaa.xetslk.com/sl/42oMpj
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/GPIXd9oDqod6TExmQ53cfJ1AnEh   密码：555F&444
+
+类飞书文档与知识库问答智能体实战，架构师带你掌握大厂前端 AI 业务重难点
+直播回放：https://e2gaa.xetslk.com/sl/4lcT3t
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Nqu4dsNlioZ2z1xp2tecHjc4nce   密码：3#54F344
+
+基于 Next.js、LangChain.js AI 全栈开发最佳实践，中大厂高年薪前端 AI 全栈能力要到这个程度！
+直播回放：https://e2gaa.xetslk.com/sl/1fR4Ly
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/Tiw3dQ8jaoWtzMxLa90cvAxonb8   密码：6@73884p
+
+基于 LangChain.js、Nuxt.js 全栈 AI 开发指南，中大厂前端 AI 全栈最新招聘风向！
+直播回放：https://e2gaa.xetslk.com/sl/44TrUD
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/MkDzdhXaMofp1IxTcUUcEVwUnCh   密码：@1513U21
+
+前端进阶 AI Agent 架构师斩获 50K+ Offer，3 个月达成学习路线与技能树全景深度剖析
+直播回放：https://e2gaa.xetslk.com/sl/C52tf
+飞书链接：https://u19tul1sz9g.feishu.cn/docx/M0JIdeuYkoEZZ2xeyMWcZ2lsnVe   密码：111z776@
