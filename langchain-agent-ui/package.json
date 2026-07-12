@@ -1,0 +1,13 @@
+{
+  "name": "langchain-agent-ui",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "dev:server": "cd server && npm start",
+    "dev:client": "cd client && npm run dev",
+    "dev": "npm run dev:server & npm run dev:client",
+    "dev:server-py": "cd server-py && pip install -r requirements.txt -q && python3 server.py",
+    "dev:py": "npm run dev:server-py & npm run dev:client"
+  }
+}
