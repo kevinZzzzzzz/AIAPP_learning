@@ -33,7 +33,7 @@ def describe_person(name: str, age: int, city: str = "北京") -> str:
 
 # 两种调用方式
 print(describe_person("张三", 30))                    # 位置传参
-print(describe_person(name="李四", age=25, city="上海"))  # 关键字传参
+print(describe_person(name="李四", city="上海", age=25))  # 关键字传参
 
 
 # ======================== 3. *args 和 **kwargs ========================
@@ -116,11 +116,53 @@ def repeat(times: int):
         return wrapper
     return decorator
 
-
 @repeat(3)
 def greet(name: str) -> str:
     print(f"Hi {name}!")
     return f"Done: {name}"
+"""
+# 【第一层：工厂层】接收装饰器参数
+def repeat(times: int): 
+    # 此时 times = 3 被保存在了闭包中
+
+    # 【第二层：真正的装饰器】接收被包装的函数
+    def decorator(func: Callable) -> Callable:
+        # 此时 func = greet 函数本身被保存在了闭包中
+
+        @functools.wraps(func)  # （见下文说明）
+        
+        # 【第三层：替换后的新函数】拦截真正的函数调用
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
+            result = None
+            
+            # 使用最外层闭包里的 times 变量
+            for _ in range(times):
+                # 使用中间层闭包里的 func 变量，并把参数透传给它
+                result = func(*args, **kwargs) 
+                
+            return result # 返回最后一次调用的结果
+            
+        return wrapper # 生产完毕，返回新函数
+        
+    return decorator # 工厂生产完毕，返回真正的装饰器
+
+// JS 版本的三层箭头函数
+const repeat = (times) => {
+    return (func) => {
+        return (...args) => {
+            let result;
+            for (let i = 0; i < times; i++) {
+                result = func(...args);
+            }
+            return result;
+        };
+    };
+};
+
+// 相当于：
+// const greet = repeat(3)( (name) => { console.log(`Hi ${name}!`); } );
+
+"""
 
 # ======================== 8. 实战：计时装饰器（AI 开发常用） ========================
 
@@ -138,12 +180,12 @@ def timeit(func: Callable) -> Callable:
 
 # ======================== 9. 实战：重试装饰器 ========================
 
+import time as _time
 def retry(max_attempts: int = 3, delay: float = 1.0):
     """失败自动重试 —— LLM API 调用中非常实用的模式"""
     def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
-            import time as _time
             for attempt in range(1, max_attempts + 1):
                 try:
                     return func(*args, **kwargs)
