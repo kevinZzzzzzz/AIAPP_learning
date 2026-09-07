@@ -247,7 +247,8 @@ if __name__ == "__main__":
     
     # 测试重复装饰器
     print("\n--- repeat(3) 测试 ---")
-    greet("Python")
+    res = greet("Python")
+    print(f'repeat(3)返回：{res}')
     
     # 测试缓存
     print("\n--- lru_cache 测试 ---")

@@ -11,6 +11,7 @@ Pydantic 是 AI 开发中最常用的数据验证库，用途：
 前端对比：Pydantic ≈ TypeScript 的 interface + Zod/Runtypes
 """
 
+# pyrefly: ignore [missing-import]
 from pydantic import BaseModel, Field, field_validator, model_validator
 from typing import Optional, Literal, Annotated
 from datetime import datetime

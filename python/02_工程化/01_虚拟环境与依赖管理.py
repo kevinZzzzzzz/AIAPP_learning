@@ -134,6 +134,7 @@ __init__.py 的作用：
 
 # ======================== 5. 日志配置 ========================
 
+from dataclasses import dataclass
 import logging
 
 def setup_logger(name: str = __name__, level: int = logging.INFO) -> logging.Logger:

@@ -15,6 +15,7 @@ AI 开发中异步的重要性：
 - FastAPI 框架天生异步
 """
 
+from ast import List
 import asyncio
 import time
 from typing import Any
@@ -130,7 +131,7 @@ async def async_range(n: int):
     这是理解流式输出的基础！LLM 的 token-by-token 输出就是通过异步生成器实现的
     """
     for i in range(n):
-        await asyncio.sleep(0.3)
+        await asyncio.sleep(1)
         yield i
 
 
@@ -166,6 +167,7 @@ async def demo_llm_parallel():
         call_llm(name, prompt, delay)
         for name, prompt, delay in providers
     ]
+    print("tasks:", tasks)
     
     # return_exceptions=True: 某个请求失败不影响其他
     results = await asyncio.gather(*tasks, return_exceptions=True)
@@ -174,6 +176,7 @@ async def demo_llm_parallel():
         if isinstance(result, Exception):
             print(f"请求失败: {result}")
         else:
+            print("result:", result)
             print(f"[{result['provider']}] 延迟={result['latency']}s")
 
 
