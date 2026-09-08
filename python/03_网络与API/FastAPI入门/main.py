@@ -15,8 +15,11 @@ JS 对比：
 运行：uvicorn main:app --reload
 """
 
+# pyrefly: ignore [missing-import]
 from fastapi import FastAPI, HTTPException, Query, Depends
+# pyrefly: ignore [missing-import]
 from fastapi.responses import StreamingResponse
+# pyrefly: ignore [missing-import]
 from pydantic import BaseModel, Field
 from typing import Optional, Literal
 import asyncio
@@ -169,6 +172,7 @@ async def check_auth(api_key: str = Depends(get_api_key)):
 
 # ======================== 8. 中间件（Middleware） ========================
 
+# pyrefly: ignore [missing-import]
 from fastapi.middleware.cors import CORSMiddleware
 
 # CORS 配置 —— 允许前端跨域请求
@@ -212,6 +216,7 @@ async def add_process_time_header(request, call_next):
 # ======================== 10. 启动说明 ========================
 
 if __name__ == "__main__":
+    # pyrefly: ignore [missing-import]
     import uvicorn
     print("""
     ╔══════════════════════════════════════════╗

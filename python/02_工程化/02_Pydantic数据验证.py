@@ -31,12 +31,28 @@ class User(BaseModel):
 user = User(name="张三", age=30, email="zhangsan@example.com")
 
 # 自动类型转换：str → int
+'''
+创建实例
+
+作用： 根据 User 模型的定义创建一个实例（对象）。
+示例输出： 它会创建一个 User 类的实例，拥有 name、age、email 和 tags 属性，例如 user.__dict__ 会显示 {'name': '张三', 'age': 30, 'email': 'zhangsan@example.com', 'tags': []}。
+'''
 user2 = User(name="李四", age="25", email="lisi@example.com")  # "25" 会被转成 25
 
 # 序列化为 dict
+'''
+model_dump
+作用： 将 Pydantic 模型实例转换为原生的 Python 字典（dict）。
+示例输出： 它会将 user 对象的属性转换为键值对，例如 {'name': '张三', 'age': 30, 'email': 'zhangsan@example.com', 'tags': []}。这在你需要将数据传递给其他需要普通字典的 Python 函数时非常有用。
+'''
 print(user.model_dump())  # {'name': '张三', 'age': 30, 'email': 'zhangsan@example.com', 'tags': []}
 
 # 序列化为 JSON
+'''
+model_dump_json
+作用： 将 Pydantic 模型实例直接转换为 JSON 格式的字符串（str）。
+示例输出： 类似于 '{"name": "张三", "age": 30, "email": "zhangsan@example.com", "tags": []}'。这在网络传输（比如作为 API 的响应返回给前端）或者保存数据到文件时非常常用。
+'''
 print(user.model_dump_json())  # JSON 字符串
 
 # 校验失败会抛出 ValidationError

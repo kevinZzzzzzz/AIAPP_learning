@@ -34,6 +34,7 @@ def test_divide():
     
 # 测试抛出异常
 # JS: expect(() => divide(1, 0)).toThrow('Cannot divide by zero');
+# pyrefly: ignore [missing-import]
 import pytest
 def test_divide_by_zero():
     # 使用 pytest.raises 上下文管理器来捕获预期中的异常

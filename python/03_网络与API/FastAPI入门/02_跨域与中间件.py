@@ -9,7 +9,9 @@ FastAPI 跨域与中间件 —— 面向前端开发者
 在 FastAPI 中配置跨域同样非常简单，使用的是内置的 `CORSMiddleware`。
 """
 
+# pyrefly: ignore [missing-import]
 from fastapi import FastAPI, Request
+# pyrefly: ignore [missing-import]
 from fastapi.middleware.cors import CORSMiddleware
 import time
 

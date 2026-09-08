@@ -61,6 +61,7 @@ def demo_requests_session():
     
     # 设置重试策略
     from requests.adapters import HTTPAdapter
+    # pyrefly: ignore [missing-import]
     from urllib3.util.retry import Retry
     
     retry_strategy = Retry(
@@ -95,6 +96,7 @@ def demo_requests_stream():
 
 # ======================== 4. httpx 异步客户端（推荐用于 AI 开发） ========================
 
+# pyrefly: ignore [missing-import]
 import httpx
 
 async def demo_httpx_async():
