@@ -43,6 +43,7 @@ def demo_dotenv():
 
 # pyrefly: ignore [missing-import]
 from pydantic_settings import BaseSettings, SettingsConfigDict
+# pyrefly: ignore [missing-import]
 from pydantic import Field
 
 class Settings(BaseSettings):
