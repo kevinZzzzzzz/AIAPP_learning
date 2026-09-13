@@ -1,0 +1,12 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+# 本地向量库（可重新索引生成，不要提交）
+rag.db
+*.db
+!data/*.db
+.DS_Store

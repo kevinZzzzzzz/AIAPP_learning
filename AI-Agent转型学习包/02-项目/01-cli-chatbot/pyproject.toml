@@ -1,0 +1,16 @@
+[project]
+name = "cli-chatbot"
+version = "0.1.0"
+description = "多轮对话 CLI 机器人 —— 模块 01/02 的产出项目"
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.60.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.9.0",
+    "pydantic>=2.9.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]

@@ -1,0 +1,28 @@
+[project]
+name = "agent-saas-backend"
+version = "0.1.0"
+description = "Agent 应用后端 —— 模块 07 产出项目（FastAPI + SSE 流式）"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "openai>=1.60.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.9.0",
+    "sse-starlette>=2.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "httpx>=0.27.0",
+]
+
+# 说明：为什么用 SSE 而不是 WebSocket？
+# LLM 流式输出的特点是【单向、服务器持续推、客户端只读】。
+# WebSocket 是全双工，重得多（需要握手协议、心跳、断线重连逻辑）。
+# 做"打字机效果"这种单向推送，SSE 是更轻、更对的选择：
+#   - 基于普通 HTTP，无需协议升级
+#   - 自带断线重连（EventSource 浏览器原生支持）
+#   - 可以穿过大多数企业防火墙（WebSocket 经常被拦）
+# 什么时候才需要 WebSocket：需要客户端高频上行（如语音实时对话、协同编辑）。

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent 应用 — SSE 流式对话</title>
+<style>
+  /* 深色主题（与 WorkBuddy 暗色模式一致） */
+  :root {
+    --bg: #0f1115;
+    --bg-elev: #171a21;
+    --bg-card: #1d2129;
+    --border: #2a2f3a;
+    --text: #e6e8eb;
+    --text-dim: #9aa2b0;
+    --accent: #4f8cf7;
+    --accent-dim: #2d5aa8;
+    --green: #3ecf8e;
+    --yellow: #e5b567;
+    --red: #e06c75;
+    --purple: #b18cf5;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  header {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-elev);
+    flex-shrink: 0;
+  }
+  header h1 { font-size: 15px; font-weight: 600; }
+  .badge {
+    font-size: 11px; padding: 2px 8px; border-radius: 20px;
+    background: var(--accent-dim); color: #cfe0ff;
+  }
+  .status { margin-left: auto; font-size: 12px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-dim); }
+  .dot.on { background: var(--green); box-shadow: 0 0 6px var(--green); }
+  .dot.busy { background: var(--yellow); animation: pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+  #chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .msg { display: flex; gap: 10px; max-width: 900px; width: 100%; margin: 0 auto; }
+  .msg .avatar {
+    width: 28px; height: 28px; border-radius: 7px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600;
+  }
+  .msg.user .avatar { background: var(--accent-dim); color: #d6e4ff; }
+  .msg.bot .avatar { background: #2a3a2f; color: var(--green); }
+  .msg .body { flex: 1; min-width: 0; }
+  .msg .name { font-size: 12px; color: var(--text-dim); margin-bottom: 3px; }
+  .msg .text { white-space: pre-wrap; word-break: break-word; }
+
+  /* 工具调用卡片 */
+  .tool {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--purple);
+    border-radius: var(--radius);
+    padding: 8px 12px;
+    margin: 6px 0;
+    font-size: 12.5px;
+  }
+  .tool .head { display: flex; align-items: center; gap: 8px; color: var(--purple); font-weight: 600; }
+  .tool .args, .tool .result {
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 11.5px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    max-height: 180px;
+    overflow-y: auto;
+  }
+  .tool .result { border-top: 1px dashed var(--border); padding-top: 4px; }
+  .tool .result.err { color: var(--red); }
+
+  /* 思考过程 */
+  .thinking {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    font-style: italic;
+    border-left: 2px solid var(--border);
+    padding-left: 10px;
+    margin: 6px 0;
+  }
+
+  .usage {
+    font-size: 11.5px;
+    color: var(--text-dim);
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid var(--border);
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 12px 20px;
+    background: var(--bg-elev);
+    flex-shrink: 0;
+  }
+  .input-row {
+    max-width: 900px; margin: 0 auto;
+    display: flex; gap: 10px; align-items: flex-end;
+  }
+  textarea {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: none;
+    outline: none;
+    min-height: 44px;
+    max-height: 140px;
+  }
+  textarea:focus { border-color: var(--accent); }
+  button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    padding: 11px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .15s;
+  }
+  button:hover:not(:disabled) { background: #3d7ce8; }
+  button:disabled { background: var(--border); color: var(--text-dim); cursor: not-allowed; }
+  .hint {
+    max-width: 900px; margin: 8px auto 0;
+    font-size: 11.5px; color: var(--text-dim);
+  }
+  .cursor {
+    display: inline-block; width: 2px; height: 14px;
+    background: var(--accent); vertical-align: middle;
+    animation: blink .8s steps(2) infinite;
+  }
+  @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Agent 应用</h1>
+  <span class="badge">SSE 流式</span>
+  <div class="status">
+    <span class="dot" id="dot"></span>
+    <span id="statusText">未连接</span>
+  </div>
+</header>
+
+<div id="chat">
+  <div class="msg bot">
+    <div class="avatar">AI</div>
+    <div class="body">
+      <div class="name">助手</div>
+      <div class="text">你好。我可以调用工具来回答问题。试试问我：
+
+· 北京今天天气怎么样？
+· 现在几点？算一下到 2027 年元旦还有几天
+· 公司的退款政策是什么？
+
+左边会实时显示我调用了哪些工具、拿到了什么结果。</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="input-row">
+    <textarea id="input" rows="1" placeholder="输入消息…（Enter 发送，Shift+Enter 换行）"></textarea>
+    <button id="send">发送</button>
+  </div>
+  <div class="hint">
+    后端地址：<span id="apiBase"></span>　·　
+    <a href="#" id="resetLink" style="color:var(--accent)">清空会话</a>
+  </div>
+</footer>
+
+<script>
+// ============================================================
+// 配置：后端地址。前端单独打开时用 localhost。
+// ============================================================
+const API_BASE = window.API_BASE || 'http://localhost:8000';
+document.getElementById('apiBase').textContent = API_BASE;
+
+const chatEl = document.getElementById('chat');
+const inputEl = document.getElementById('input');
+const sendBtn = document.getElementById('send');
+const dotEl = document.getElementById('dot');
+const statusEl = document.getElementById('statusText');
+
+let sessionId = null;      // 走完第一轮后由后端下发
+let busy = false;
+
+// ============================================================
+// 工具函数
+// ============================================================
+function setStatus(text, cls) {
+  statusEl.textContent = text;
+  dotEl.className = 'dot' + (cls ? ' ' + cls : '');
+}
+
+function addMsg(role) {
+  const wrap = document.createElement('div');
+  wrap.className = 'msg ' + role;
+  const avatar = document.createElement('div');
+  avatar.className = 'avatar';
+  avatar.textContent = role === 'user' ? '你' : 'AI';
+  const body = document.createElement('div');
+  body.className = 'body';
+  const name = document.createElement('div');
+  name.className = 'name';
+  name.textContent = role === 'user' ? '你' : '助手';
+  const text = document.createElement('div');
+  text.className = 'text';
+  body.appendChild(name);
+  body.appendChild(text);
+  wrap.appendChild(avatar);
+  wrap.appendChild(body);
+  chatEl.appendChild(wrap);
+  chatEl.scrollTop = chatEl.scrollHeight;
+  return { wrap, body, text };
+}
+
+// 工具调用卡片
+function addToolCard(tool, args) {
+  const card = document.createElement('div');
+  card.className = 'tool';
+  const head = document.createElement('div');
+  head.className = 'head';
+  head.innerHTML = '<span>⚙</span><span>调用工具：' + escapeHtml(tool) + '</span>';
+  const argsEl = document.createElement('div');
+  argsEl.className = 'args';
+  argsEl.textContent = '参数：' + JSON.stringify(args, null, 0);
+  card.appendChild(head);
+  card.appendChild(argsEl);
+  return { card, argsEl };
+}
+
+function escapeHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// ============================================================
+// 核心：发送消息 + 解析 SSE 流
+// ============================================================
+async function send() {
+  const message = inputEl.value.trim();
+  if (!message || busy) return;
+
+  inputEl.value = '';
+  inputEl.style.height = 'auto';
+  busy = true;
+  sendBtn.disabled = true;
+  setStatus('思考中…', 'busy');
+
+  addMsg('user').text.textContent = message;
+
+  const bot = addMsg('bot');
+  let botText = '';
+  let currentTool = null;
+
+  try {
+    const resp = await fetch(API_BASE + '/api/chat/stream', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, session_id: sessionId }),
+    });
+
+    if (!resp.ok) {
+      throw new Error('HTTP ' + resp.status + '：' + (await resp.text()).slice(0, 200));
+    }
+
+    // 读取流式响应
+    const reader = resp.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+
+      // SSE 以空行分隔事件
+      const chunks = buffer.split('\n\n');
+      buffer = chunks.pop();       // 最后一段可能不完整，留到下次
+
+      for (const chunk of chunks) {
+        if (!chunk.trim()) continue;
+
+        // 解析 event: 和 data: 行
+        let eventName = 'message';
+        let dataStr = '';
+        for (const line of chunk.split('\n')) {
+          if (line.startsWith('event:')) eventName = line.slice(6).trim();
+          else if (line.startsWith('data:')) dataStr += line.slice(5).trim();
+        }
+        if (!dataStr) continue;
+
+        let data;
+        try { data = JSON.parse(dataStr); } catch (e) { continue; }
+
+        handleEvent(eventName, data, {
+          bot,
+          appendText: (t) => {
+            botText += t;
+            bot.text.textContent = botText;
+            // 加光标
+            if (bot.text.nextSibling !== null && bot.text.nextSibling.className === 'cursor') {}
+            chatEl.scrollTop = chatEl.scrollHeight;
+          },
+          onToolCall: (tool, args) => {
+            const { card, argsEl } = addToolCard(tool, args);
+            bot.body.appendChild(card);
+            currentTool = { card, tool };
+            chatEl.scrollTop = chatEl.scrollHeight;
+          },
+          onToolResult: (tool, result, isErr) => {
+            if (currentTool && currentTool.card) {
+              const r = document.createElement('div');
+              r.className = 'result' + (isErr ? ' err' : '');
+              r.textContent = '结果：' + result;
+              currentTool.card.appendChild(r);
+            }
+            chatEl.scrollTop = chatEl.scrollHeight;
+          },
+          onThinking: (c) => {
+            const t = document.createElement('div');
+            t.className = 'thinking';
+            t.textContent = '思考：' + c;
+            bot.body.appendChild(t);
+          },
+          onDone: (usage) => {
+            const u = document.createElement('div');
+            u.className = 'usage';
+            u.textContent = `步数 ${usage.steps} · 输入 ${usage.input_tokens} / 输出 ${usage.output_tokens} token · 成本 $${usage.cost_usd}`;
+            bot.body.appendChild(u);
+          },
+        });
+      }
+    }
+  } catch (err) {
+    const e = document.createElement('div');
+    e.className = 'tool';
+    e.style.borderLeftColor = 'var(--red)';
+    e.textContent = '请求失败：' + err.message + '（确认后端已启动，且 CORS 配置正确）';
+    bot.body.appendChild(e);
+    setStatus('出错', '');
+  } finally {
+    busy = false;
+    sendBtn.disabled = false;
+    setStatus(sessionId ? '会话 ' + sessionId : '就绪', 'on');
+    chatEl.scrollTop = chatEl.scrollHeight;
+  }
+}
+
+// 事件分发
+function handleEvent(name, data, ctx) {
+  switch (data.type || name) {
+    case 'session':
+      sessionId = data.session_id;
+      break;
+    case 'thinking':
+      ctx.onThinking(data.content);
+      break;
+    case 'tool_call':
+      ctx.onToolCall(data.tool, data.args);
+      break;
+    case 'tool_result':
+      ctx.onToolResult(data.tool, data.result, data.error);
+      break;
+    case 'text':
+      ctx.appendText(data.content);
+      break;
+    case 'done':
+      ctx.onDone(data.usage || {});
+      break;
+    case 'error':
+      const e = document.createElement('div');
+      e.className = 'tool';
+      e.style.borderLeftColor = 'var(--red)';
+      e.textContent = '⚠ ' + (data.message || '未知错误');
+      ctx.bot.body.appendChild(e);
+      break;
+  }
+}
+
+// ============================================================
+// 交互绑定
+// ============================================================
+sendBtn.addEventListener('click', send);
+
+inputEl.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    send();
+  }
+});
+
+inputEl.addEventListener('input', () => {
+  inputEl.style.height = 'auto';
+  inputEl.style.height = Math.min(inputEl.scrollHeight, 140) + 'px';
+});
+
+document.getElementById('resetLink').addEventListener('click', async (e) => {
+  e.preventDefault();
+  if (sessionId) {
+    try { await fetch(API_BASE + '/api/sessions/' + sessionId, { method: 'DELETE' }); } catch (e) {}
+  }
+  sessionId = null;
+  chatEl.innerHTML = '';
+  addMsg('bot').text.textContent = '会话已清空，可以重新开始了。';
+  setStatus('就绪', 'on');
+});
+
+// 启动时探测后端
+(async () => {
+  try {
+    const r = await fetch(API_BASE + '/api/health');
+    const d = await r.json();
+    setStatus('已连接 · ' + d.model, 'on');
+  } catch (e) {
+    setStatus('后端未启动', '');
+  }
+})();
+</script>
+</body>
+</html>

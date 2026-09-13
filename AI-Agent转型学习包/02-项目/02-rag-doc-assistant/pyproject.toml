@@ -1,0 +1,23 @@
+[project]
+name = "rag-doc-assistant"
+version = "0.1.0"
+description = "RAG 文档问答助手 —— 模块 03 的产出项目（含混合检索与引用溯源）"
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.60.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.9.0",
+    "numpy>=1.26.0",
+    "jieba>=0.42.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]
+
+# 为什么不用 chromadb / faiss？
+# 学习阶段用 numpy + sqlite 自己实现一遍，你才真正理解"向量检索"到底做了什么：
+#   存了什么（向量 + 原文 + 元数据）、怎么比（余弦相似度）、慢在哪（全量扫描）。
+# 理解之后再用 Chroma / Milvus / pgvector，才知道它们帮你省了什么。
+# 生产环境推荐：pgvector（已有 Postgres 时最省事）或 Chroma（中小规模最省心）。

@@ -1,0 +1,23 @@
+[project]
+name = "tool-agent"
+version = "0.1.0"
+description = "工具调用 Agent —— 模块 04/05 的产出项目（手写 ReAct + 安全护栏）"
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.60.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.9.0",
+    "pydantic>=2.9.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]
+
+# 说明：本项目【不依赖 LangChain / LangGraph】。
+# 先用 300 行手写 ReAct，把"模型返回 tool_calls → 我执行 → 把结果塞回去 → 再问"
+# 这个循环跑通、跑透，再去用 LangGraph，你才分得清哪些是框架的价值、
+# 哪些只是你自己没写明白。
+#
+# 想看 LangGraph 版本？见 src/langgraph_version.py（需要额外装 langgraph）

@@ -74,7 +74,14 @@ def demo_requests_session():
     
     try:
         response = session.get("https://httpbin.org/get", timeout=10)
-        print(f"Session GET: {response.status_code}")
+        # 将 response 关键信息提取为字典格式展示
+        res_dict = {
+            "status_code": response.status_code,
+            "url": response.url,
+            "headers": dict(response.headers),
+            "body": response.json() # httpbin 返回的是 JSON，所以可以直接解析
+        }
+        print(f"Session GET: {res_dict}")
     finally:
         session.close()
 
@@ -234,6 +241,9 @@ if __name__ == "__main__":
     # 运行同步示例
     print("=== requests 基础 ===")
     demo_requests_basic()
+
+    print("=== requests Session（复用连接） ===")
+    demo_requests_session()
     
     print("\n=== requests 流式 ===")
     demo_requests_stream()
