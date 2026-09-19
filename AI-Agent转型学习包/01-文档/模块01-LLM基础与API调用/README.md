@@ -104,7 +104,7 @@ messages = [
 **关于 `system` 的三个要点**：
 
 1. **模型对 system 的服从度最高。** 关键约束（如"只输出 JSON"）要放这里，不要放在 user 里
-2. **system 通常要放长且固定**，正好能命中 prompt cache（前面价格表里"缓存命中"那列），省钱关键
+2. **system 通常要放长且固定**，正好能命中 prompt cache（前面价格表里"缓存命中"那列），省钱关键。**⚠️避坑**：不要把频繁变化的动态变量（如当前时间戳）放在 system prompt 的开头，否则会导致 Cache 前缀匹配失败，失去降本提速效果。动态变量应尽量往后放，或放在 user 消息里。
 3. **顺序有意义**：一般 system 在最前，然后是历史对话按时间排序，最后是当前 user 消息
 
 ### 2.4 上下文窗口（Context Window）
@@ -323,6 +323,7 @@ def chat():
             model="deepseek-v4-flash",
             messages=history,
             stream=True,
+            stream_options={"include_usage": True}, # 关键：流式必须加这个参数，否则拿不到用量
             temperature=0.3,
         )
 
@@ -330,12 +331,12 @@ def chat():
         reply = ""
         usage = None
         for chunk in stream:
-            if chunk.usage:                        # 部分接口在最后一个 chunk 返回用量
+            if getattr(chunk, "usage", None):      # 最后一个 chunk 会携带完整的用量信息
                 usage = chunk.usage
-            if not chunk.choices:
+            if not chunk.choices:                  # 携带 usage 的 chunk choices 可能为空，需判空
                 continue
             delta = chunk.choices[0].delta
-            if delta.content:
+            if getattr(delta, "content", None):
                 reply += delta.content
                 print(delta.content, end="", flush=True)
         print()
@@ -348,12 +349,12 @@ def chat():
             print("  [提示] 上下文已裁剪，遗忘早期对话")
 
         # 成本统计（DeepSeek flash 价格，每百万 token）
-        u = usage or client.chat.completions.create(
-            model="deepseek-v4-flash", messages=history, max_tokens=1
-        ).usage
-        cost = u.prompt_tokens / 1e6 * 0.14 + u.completion_tokens / 1e6 * 0.28
-        total_cost += cost
-        print(f"  [本轮] {u.prompt_tokens}+{u.completion_tokens} token ≈ ¥{cost:.4f}")
+        if usage:
+            cost = usage.prompt_tokens / 1e6 * 0.14 + usage.completion_tokens / 1e6 * 0.28
+            total_cost += cost
+            print(f"  [本轮] {usage.prompt_tokens}+{usage.completion_tokens} token ≈ ¥{cost:.4f}")
+        else:
+            print("  [警告] 未获取到 token 用量")
 
 if __name__ == "__main__":
     chat()
@@ -455,15 +456,19 @@ def call_llm(messages, model="deepseek-v4-flash", temperature=0.3,
 **后果**：要做格式输出时，模型随机发挥导致解析失败。
 **正确做法**：结构化输出/工具调用 temperature ≤ 0.3。
 
-### 坑 6：上下文无限增长
+### 坑 6：不检查 `finish_reason`
+**后果**：有时候模型输出的 JSON 格式残缺，导致后续解析直接报错崩溃。其实是因为文本过长触发了限制被截断了。
+**正确做法**：习惯检查流式返回的最后一次 `finish_reason`，如果等于 `"length"`，说明内容被截断，需要在产品层面做容错或重试。
+
+### 坑 7：上下文无限增长
 **后果**：跑到第 20 轮突然报错，或者成本线性上升、回答质量还变差。
 **正确做法**：明确设定上下文上限并做裁剪或摘要。
 
-### 坑 7：以为模型会算数
+### 坑 8：以为模型会算数
 **后果**：让它算财务数据，结果算错还理直气壮。
 **正确做法**：计算交给代码/工具（这是模块 04 的重点）。
 
-### 坑 8：用 `print` 调试大对象
+### 坑 9：用 `print` 调试大对象
 **后果**：输出一大坨看不出重点。
 **正确做法**：只打关键字段，或用 `rich` 库美化输出。
 
