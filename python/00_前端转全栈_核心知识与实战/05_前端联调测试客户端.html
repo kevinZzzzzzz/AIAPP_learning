@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端转全栈 Python FastAPI 联调测试客户端</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --success: #10b981;
+            --text-color: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 24px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #60a5fa;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        input[type="text"], input[type="password"] {
+            flex: 1;
+            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        button.success {
+            background-color: var(--success);
+        }
+
+        .output-box {
+            background-color: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 6px;
+            padding: 12px;
+            font-family: 'Fira Code', Consolas, Monaco, monospace;
+            font-size: 13px;
+            color: #4ade80;
+            min-height: 100px;
+            max-height: 250px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .typewriter-box {
+            background-color: #090d16;
+            border: 1px solid #3b82f6;
+            border-radius: 6px;
+            padding: 14px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #e2e8f0;
+            min-height: 120px;
+            white-space: pre-wrap;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: #38bdf8;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .badge {
+            background: #334155;
+            color: #94a3b8;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 前端转全栈：Python FastAPI 交互测试台</h1>
+        <p class="subtitle">可以直接在浏览器双击打开此页面，与你的 Python 后端服务全栈联调！</p>
+
+        <div class="grid">
+            <!-- 模块 1: 基础 Ping & API 健康检查 -->
+            <div class="card">
+                <h2>1. 基础 HTTP 接口 (GET /api/ping)</h2>
+                <p style="color: var(--text-secondary); font-size: 13px;">测试与 Python FastAPI 的 CORS 跨域连接是否畅通</p>
+                <div class="input-group">
+                    <button onclick="testPing()">发送 GET 请求</button>
+                </div>
+                <div id="ping-output" class="output-box">// 点击上方按钮发送请求...</div>
+            </div>
+
+            <!-- 模块 2: SSE 全栈 AI 流式打字机效果 -->
+            <div class="card">
+                <h2>2. 全栈 AI 打字机流式输出 (SSE Stream)</h2>
+                <p style="color: var(--text-secondary); font-size: 13px;">测试 ReadableStream 分块流式解码渲染</p>
+                <div class="input-group">
+                    <input type="text" id="stream-prompt" value="前端转全栈的核心优势是什么？">
+                    <button class="success" onclick="startStream()">发送 Prompt 并流式接收</button>
+                </div>
+                <div id="stream-output" class="typewriter-box">点击发送体验逐字打印效果...</div>
+            </div>
+
+            <!-- 模块 3: JWT 登录鉴权 -->
+            <div class="card">
+                <h2>3. JWT 身份认证 (Auth & Bearer Token)</h2>
+                <p style="color: var(--text-secondary); font-size: 13px;">测试登录获取 Token 与 Request Header 携带鉴权</p>
+                <div class="input-group">
+                    <input type="text" id="username" value="kevin">
+                    <button onclick="doLogin()">1. 登录获取 JWT</button>
+                </div>
+                <div class="input-group">
+                    <button class="success" onclick="fetchProfile()">2. 带 Header 请求受保护接口</button>
+                </div>
+                <div id="auth-output" class="output-box">// Token 校验状态将在这里呈现...</div>
+            </div>
+
+            <!-- 模块 4: 全栈 CRUD 待办事项数据列表 -->
+            <div class="card">
+                <h2>4. RESTful CRUD 数据列表</h2>
+                <p style="color: var(--text-secondary); font-size: 13px;">测试规范的 GET / POST 数据交互</p>
+                <div class="input-group">
+                    <input type="text" id="todo-input" placeholder="输入新的全栈待办任务...">
+                    <button onclick="addTodo()">新增任务 (POST)</button>
+                    <button onclick="loadTodos()" style="background-color: #475569;">刷新列表</button>
+                </div>
+                <div id="todo-output" class="output-box">// CRUD 列表响应数据...</div>
+            </div>
+
+            <!-- 模块 5: 真实 SQLite 数据库持久化交互 -->
+            <div class="card">
+                <h2>5. 🗄️ 真实 SQLite 数据库读写 (SQLAlchemy ORM)</h2>
+                <p style="color: var(--text-secondary); font-size: 13px;">测试落盘存入本地 `./app_database.db` 文件的真实对话记录</p>
+                <div class="input-group">
+                    <input type="text" id="db-prompt" placeholder="用户 Prompt..." value="解释一下什么是全栈数据库">
+                    <button class="success" onclick="addDbRecord()">写入真实 DB (POST)</button>
+                    <button onclick="loadDbRecords()" style="background-color: #0284c7;">读取 DB 列表 (GET)</button>
+                </div>
+                <div id="db-output" class="output-box">// 数据库查询结果...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BASE_URL = "http://127.0.0.1:8000";
+        let currentJwtToken = "";
+
+        // 1. 基础 Ping
+        async function testPing() {
+            const out = document.getElementById("ping-output");
+            out.textContent = "请求中...";
+            try {
+                const res = await fetch(`${BASE_URL}/api/ping`);
+                const data = await res.json();
+                out.textContent = JSON.stringify(data, null, 2);
+            } catch (err) {
+                out.textContent = `❌ 请求失败: ${err.message}\n(请确保后端的 01_FastAPI基础路由... 脚本已启动)`;
+            }
+        }
+
+        // 2. SSE 流式传输核心前端实现！(关键代码)
+        async function startStream() {
+            const prompt = document.getElementById("stream-prompt").value;
+            const box = document.getElementById("stream-output");
+            box.innerHTML = '<span class="cursor"></span>';
+            
+            try {
+                const response = await fetch(`${BASE_URL}/api/chat/stream`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ prompt, model: "deepseek-chat" })
+                });
+
+                if (!response.ok) {
+                    box.textContent = "❌ 流式接口连接失败";
+                    return;
+                }
+
+                // 获得分块流读取器 ReadableStreamReader
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder("utf-8");
+                let fullText = "";
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    const chunk = decoder.decode(value, { stream: true });
+                    const lines = chunk.split("\n\n");
+
+                    for (const line of lines) {
+                        if (line.startsWith("data: ")) {
+                            const dataStr = line.replace("data: ", "").trim();
+                            if (dataStr === "[DONE]") {
+                                console.log("流式结束");
+                                break;
+                            }
+                            try {
+                                const parsed = JSON.parse(dataStr);
+                                fullText += parsed.content;
+                                box.innerHTML = fullText.replace(/\n/g, "<br>") + '<span class="cursor"></span>';
+                            } catch (e) {
+                                // 忽略解析中的小异常
+                            }
+                        }
+                    }
+                }
+                // 移除打字光标
+                box.innerHTML = fullText.replace(/\n/g, "<br>");
+
+            } catch (err) {
+                box.textContent = `❌ 发生错误: ${err.message}\n(请确保已运行 02_全栈AI流式打字机_SSE后端实现.py 服务)`;
+            }
+        }
+
+        // 3. 登录与 Auth
+        async function doLogin() {
+            const username = document.getElementById("username").value;
+            const out = document.getElementById("auth-output");
+            try {
+                const res = await fetch(`${BASE_URL}/api/auth/login`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password: "123" })
+                });
+                const data = await res.json();
+                if (data.access_token) {
+                    currentJwtToken = data.access_token;
+                    out.textContent = `✅ 登录成功！已保存 JWT Token:\n${currentJwtToken}`;
+                } else {
+                    out.textContent = JSON.stringify(data, null, 2);
+                }
+            } catch (err) {
+                out.textContent = `❌ 登录出错: ${err.message} (请运行 03_用户鉴权与JWT... 后端)`;
+            }
+        }
+
+        async function fetchProfile() {
+            const out = document.getElementById("auth-output");
+            if (!currentJwtToken) {
+                alert("请先点击『1. 登录获取 JWT』获得 Token");
+                return;
+            }
+            try {
+                const res = await fetch(`${BASE_URL}/api/user/profile`, {
+                    headers: { "Authorization": `Bearer ${currentJwtToken}` }
+                });
+                const data = await res.json();
+                out.textContent = "受保护接口返回结果:\n" + JSON.stringify(data, null, 2);
+            } catch (err) {
+                out.textContent = `❌ 访问受阻: ${err.message}`;
+            }
+        }
+
+        // 4. CRUD Todos
+        async function loadTodos() {
+            const out = document.getElementById("todo-output");
+            try {
+                const res = await fetch(`${BASE_URL}/api/todos`);
+                const data = await res.json();
+                out.textContent = JSON.stringify(data, null, 2);
+            } catch (err) {
+                out.textContent = `❌ 无法加载列表 (请运行 04_全栈CRUD... 后端)`;
+            }
+        }
+
+        async function addTodo() {
+            const input = document.getElementById("todo-input");
+            if (!input.value.trim()) return;
+            try {
+                await fetch(`${BASE_URL}/api/todos`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ title: input.value, priority: "high" })
+                });
+                input.value = "";
+                loadTodos();
+            } catch (err) {
+                alert("新增失败: " + err.message);
+            }
+        }
+
+        // 5. 真实 SQLite 数据库读写交互函数 (对应 08_SQLAlchemy... 脚本)
+        async function loadDbRecords() {
+            const out = document.getElementById("db-output");
+            try {
+                const res = await fetch(`${BASE_URL}/api/db/conversations`);
+                const data = await res.json();
+                out.textContent = `🗄️ 从 SQLite 数据库真实查出的 ${data.length} 条记录:\n` + JSON.stringify(data, null, 2);
+            } catch (err) {
+                out.textContent = `❌ 数据库查询失败: ${err.message}\n(请先运行 08_SQLAlchemy与SQLModel数据库持久化_Prisma对比.py 服务)`;
+            }
+        }
+
+        async function addDbRecord() {
+            const promptInput = document.getElementById("db-prompt").value;
+            const out = document.getElementById("db-output");
+            if (!promptInput.trim()) return;
+            try {
+                const res = await fetch(`${BASE_URL}/api/db/conversations`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        title: promptInput.substring(0, 20),
+                        prompt: promptInput,
+                        response: "数据库持久化存储测试成功！这是写入落盘 SQLite 文件的数据。",
+                        model: "deepseek-chat",
+                        tokens: 200
+                    })
+                });
+                const data = await res.json();
+                out.textContent = "✅ 成功向 SQLite 数据文件写入新记录:\n" + JSON.stringify(data, null, 2);
+            } catch (err) {
+                out.textContent = `❌ 数据库写入失败: ${err.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
