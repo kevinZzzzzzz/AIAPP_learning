@@ -1,0 +1,49 @@
+# -------------------------------------------------------------------
+# Java Spring Boot 全栈示例后端 - 核心配置文件
+# -------------------------------------------------------------------
+
+server:
+  port: 8080            # 前端请求 BaseURL: http://localhost:8080
+  servlet:
+    context-path: /    # 接口根路径
+
+spring:
+  application:
+    name: java-backend-demo
+
+  # 1. 数据库连接配置 (默认使用 H2 内存数据库，无需安装任何软件开箱即用)
+  datasource:
+    url: jdbc:h2:mem:demo_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+    
+    # [备选配置] 如果后续连接本地真实 MySQL，请注释上面 H2，取消下面注释：
+    # url: jdbc:mysql://localhost:3306/demo_db?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    # driver-class-name: com.mysql.cj.jdbc.Driver
+    # username: root
+    # password: 123456
+
+  # 2. H2 可视化控制台 (访问 http://localhost:8080/h2-console 即可看表查数据)
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+
+  # 3. JPA / Hibernate ORM 配置 (自动根据 Java Entity 类创建数据库表)
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update    # 自动建表与更新字段
+    show-sql: true        # 控制台打印 SQL 语句 (排错调试神器)
+    properties:
+      hibernate:
+        format_sql: true
+
+# 日志输出配置
+logging:
+  level:
+    root: INFO
+    com.example.demo: DEBUG  # 打印内部调试日志

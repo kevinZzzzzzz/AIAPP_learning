@@ -1,0 +1,11 @@
+com\example\demo\DemoApplication.class
+com\example\demo\entity\User.class
+com\example\demo\repository\AppointmentRepository.class
+com\example\demo\entity\Appointment.class
+com\example\demo\service\UserService.class
+com\example\demo\controller\UserController.class
+com\example\demo\controller\AppointmentController.class
+com\example\demo\common\Result.class
+com\example\demo\config\CorsConfig.class
+com\example\demo\repository\UserRepository.class
+com\example\demo\service\impl\UserServiceImpl.class
