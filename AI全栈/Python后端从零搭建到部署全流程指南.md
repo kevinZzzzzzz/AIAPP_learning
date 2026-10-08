@@ -20,8 +20,13 @@ cd "f:\project\AI应用开发\AI appointment develop\AI全栈\python-backend-dem
 # 2. 创建虚拟环境 venv
 python -m venv venv
 
-# 3. 激活虚拟环境 (Windows PowerShell)
+# 3. 激活虚拟环境
+#    Windows (PowerShell):
 .\venv\Scripts\Activate.ps1
+#    macOS / Linux (终端、zsh、bash 通用):
+source venv/bin/activate
+# 说明：激活成功后，命令行提示符前面会出现 (venv) 字样，表示已处于隔离环境；
+#       退出虚拟环境（回到系统全局 Python）执行：deactivate
 
 # 4. 安装依赖包 (利用国内清华/阿里镜像极速安装)
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
