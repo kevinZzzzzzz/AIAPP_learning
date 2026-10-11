@@ -29,6 +29,7 @@ app.add_middleware(
 @app.on_event("startup")
 def startup_event():
     db = next(get_db())
+    print(db.query(models.UserModel), '查询')
     if db.query(models.UserModel).count() == 0:
         crud.create_user(db, schemas.UserCreate(username="admin", nickname="全栈超级管理员", role="ADMIN"))
         crud.create_user(db, schemas.UserCreate(username="kevin", nickname="前端工程师", role="USER"))
@@ -87,6 +88,7 @@ def create_appointment(appt: schemas.AppointmentCreate, db: Session = Depends(ge
 
 if __name__ == "__main__":
     import uvicorn
-    print("🚀 启动 Python FastAPI 服务器: http://127.0.0.1:8000")
-    print("📚 API 可视化交互文档: http://127.0.0.1:8000/docs")
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    print("🚀 启动 Python FastAPI 服务器: http://[IP_ADDRESS]")
+    print("📚 API 可视化交互文档: http://[IP_ADDRESS]/docs")
+    # 0.0.0.0 代表监听本机所有网卡（允许局域网外部设备访问）
+    uvicorn.run("main:app", port=8000, reload=True)
