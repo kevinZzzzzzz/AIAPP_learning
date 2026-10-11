@@ -139,3 +139,101 @@ server {
     }
 }
 ```
+
+
+将本地代码上传到 Linux 云服务器，通常有以下 **4 种主流方式**。推荐**方式一（Git）**或**方式二（rsync/scp 命令行）**。
+
+---
+
+### ⚠️ 上传前的关键注意点（必看）
+> **切勿把本地的 `venv` 文件夹上传到服务器！**
+> `venv` 是 Mac 本地的 Python 环境，Linux 系统无法直接运行。上传到服务器后，需要在服务器上重新执行 `pip install -r requirements.txt`。
+
+---
+
+### 方式 1：通过 Git 仓库拉取（⭐⭐⭐⭐⭐ 行业最标准做法）
+
+这是正规项目开发与部署的最优解，后续更新代码只需要一条 `git pull`。
+
+1. **本地推送代码到 GitHub / Gitee**：
+   在本地项目目录下：
+   ```bash
+   cd /Users/kevinzzzzzzz/Documents/Code/AIAPP_learning/AI全栈/python-backend-demo
+   git init
+   git add .
+   git commit -m "feat: init fastApi backend"
+   # 推送到你的 GitHub / Gitee 远程仓库
+   git remote add origin https://github.com/你的用户名/你的仓库名.git
+   git push -u origin main
+   ```
+
+2. **在云服务器上克隆拉取**：
+   通过 SSH 登录云服务器后：
+   ```bash
+   ssh root@<你的服务器公网IP>
+   
+   # 在服务器上拉取代码
+   git clone https://github.com/你的用户名/你的仓库名.git
+   cd 你的仓库名
+   ```
+
+---
+
+### 方式 2：使用 `rsync` 或 `scp` 命令行直传（⭐⭐⭐⭐ 快速、无需建 Git 仓库）
+
+Mac 自带这两个命令，一条命令就能把本地代码同步到服务器，并自动**排除** `venv` 和缓存文件。
+
+在 **Mac 本地终端** 运行：
+
+```bash
+# 进入 demo 所在的上级目录
+cd /Users/kevinzzzzzzz/Documents/Code/AIAPP_learning/AI全栈
+
+# 使用 rsync 传输（排除 venv 虚拟环境和 Python 缓存）
+rsync -avz --exclude 'venv' --exclude '__pycache__' --exclude '.git' \
+  python-backend-demo/ root@<你的服务器IP>:/var/www/python-backend-demo/
+```
+*(输入服务器密码即可完成传输，传输速度极快且自带压缩)*
+
+---
+
+### 方式 3：使用图形化 SFTP 工具（⭐⭐⭐⭐ 新手最直观）
+
+如果你习惯鼠标拖拽操作：
+
+1. 下载免费的 SFTP 工具，如：
+   * **[Cyberduck](https://cyberduck.io/)**（Mac 上经典开源）
+   * **[FileZilla](https://filezilla-project.org/)**
+   * **[Termius](https://termius.com/)**（好看好用的 SSH + SFTP 终端）
+2. 新建连接：
+   * 协议：`SFTP`
+   * 主机/IP：你的服务器公网 IP
+   * 用户名：`root`（或你的服务器用户）
+   * 端口：`22`
+   * 密码：你的服务器密码
+3. 连接成功后，左边是 Mac 本地文件，右边是服务器目录，直接**全选文件（不选 venv）拖到右边**即可。
+
+---
+
+### 方式 4：使用 VS Code 的 Remote - SSH 插件
+
+1. 在 VS Code 安装官方插件 **`Remote - SSH`**。
+2. 按 `Cmd + Shift + P`，输入 `Remote-SSH: Connect to Host...`，输入 `root@<你的服务器IP>` 连接。
+3. 连接后，VS Code 左侧会变成服务器的目录，你可以直接把本地文件拖入左侧文件树，也可以直接在服务器上写代码、开终端。
+
+---
+
+### 代码上传后的第一步：
+代码传到服务器后，在服务器终端执行：
+```bash
+cd python-backend-demo
+# 1. 推荐在服务器也创建独立的虚拟环境
+python3 -m venv venv
+source venv/bin/activate
+
+# 2. 安装项目依赖
+pip install -r requirements.txt
+
+# 3. 运行服务
+nohup uvicorn main:app --host 0.0.0.0 --port 8000 > app.log 2>&1 &
+```
