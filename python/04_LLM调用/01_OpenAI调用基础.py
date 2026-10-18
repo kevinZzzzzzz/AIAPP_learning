@@ -389,4 +389,9 @@ async def main():
 
 
 if __name__ == "__main__":
+    """
+    asyncio.run(main()) 是 Python 异步代码的**“启动引擎”**。
+    它的作用是：创建一个全新的事件循环（Event Loop），执行传入的 async 协程函数 main()，并在执行完毕后彻底关闭事件循环。
+    """
     asyncio.run(main())
+
