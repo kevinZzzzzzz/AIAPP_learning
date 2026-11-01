@@ -77,13 +77,34 @@ def print_user(user: UserDict) -> None:
 
 @dataclass
 class User:
-    """dataclass 自动生成 __init__、__repr__、__eq__ 等方法
+    """dataclass 自动生成以下特殊方法（Magic Methods / Dunder Methods）：
+    
+    1. __init__: 构造函数（≈ JS/TS class 的 constructor）
+       - 普通 class 中原本需要手动编写：
+         def __init__(self, name: str, age: int, email: Optional[str] = None):
+             self.name = name
+             self.age = age
+             self.email = email
+       - 作用：支持直接通过 User("Alice", 20) 初始化实例属性。
+
+    2. __repr__: 字符串表示方法（用于调试与打印输出，≈ JS 的 toString() / console.log 格式化）
+       - 作用：print(u) 或控制台输出时呈现清晰可读的格式：User(name='Alice', age=20, email=None)
+       - 普通 class 若未定义 __repr__，默认打印的是无意义的内存地址：<__main__.User object at 0x102...>
+
+    3. __eq__: 等值运算符 == 的重载（属性值内容比较）
+       - 作用：u1 == u2 会自动逐一对比 name、age、email 字段的值是否均相等。
+       - 普通 class 中默认 == 比较的是对象内存引用（类似 JS 中的 obj1 === obj2，两个独立对象即便内容完全一致也会判定为 False）。
+       - dataclass 的 __eq__ 让其实例天然支持“按属性值比较”（类似数据记录/值对象）。
     
     TS 等价：class User { constructor(public name: string, ...) {} }
     """
     name: str
     age: int
     email: Optional[str] = None  # 有默认值
+    # def __init__(self, name: str, age: int, email: Optional[str] = None):
+    #     self.name = name
+    #     self.age = age
+    #     self.email = email
 
     def is_adult(self) -> bool:
         return self.age >= 18

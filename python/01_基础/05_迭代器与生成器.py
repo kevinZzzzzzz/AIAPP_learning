@@ -155,6 +155,7 @@ def demo_itertools():
     for key, group in grouped:
         print(f"groupby {key}: {list(group)}")
     
+    print(list(itertools.product("AB", "12")))
     # product: 笛卡尔积
     for combo in itertools.product("AB", "12"):
         print(f"product: {combo}", end=" ")  # ('A','1') ('A','2') ('B','1') ('B','2')
@@ -206,12 +207,14 @@ def demo_ai_chunking():
     )
     
     print("\n=== 固定大小切片 ===")
+    print(text)
+    print(list(process_in_chunks(text, 50)))
     for i, chunk in enumerate(process_in_chunks(text, 50)):
         print(f"Chunk {i}: [{len(chunk)}字符] {chunk}")
     
     print("\n=== 滑动窗口切片 ===")
     for i, chunk in enumerate(sliding_window(text, 60, 15)):
-        print(f"Window {i}: [{len(chunk)}字符] {chunk[:40]}...")
+        print(f"Window {i}: [{len(chunk)}字符] {chunk}...")
 
 
 # ======================== 8. enumerate & zip —— 前端熟悉的搭档 ========================
@@ -235,9 +238,9 @@ def demo_builtins():
 
 
 if __name__ == "__main__":
-    demo_iterator()
-    demo_generator()
-    demo_yield_from()
+    # demo_iterator()
+    # demo_generator()
+    # demo_yield_from()
     demo_itertools()
     demo_ai_chunking()
     demo_builtins()

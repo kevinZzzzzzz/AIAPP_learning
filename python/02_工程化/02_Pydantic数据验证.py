@@ -84,6 +84,20 @@ class LLMRequest(BaseModel):
 
 # JSON Schema 自动生成（Function Calling 的核心！）
 print("LLMRequest Schema:", LLMRequest.model_json_schema())
+'''
+为什么说这是 “Function Calling / AI Agent 的核心”？
+
+如果你调用过 OpenAI、Claude、Gemini 的 Function Calling（工具调用） 或 Structured Outputs（结构化输出），你应该知道：
+
+大模型只认识标准的 JSON Schema： 大模型是一个语言模型，你没法直接把 Python 的 class LLMRequest 扔给它。 你必须把工具的入参规范转化成上面这种标准 JSON Schema 传给 OpenAI 的 tools=[{"type": "function", "function": {"parameters": ...}}]。
+
+自动生成 vs 手写灾难：
+
+如果手写：你要手敲几十行容易拼写错的 JSON 格式（"type": "object", "properties": {...}, "required": [...]），不仅极容易写错漏字段，而且改了代码还要改 JSON，痛苦不堪。
+使用 Pydantic：你只需定义好清晰的 Python Class，调用一下 .model_json_schema()，就能自动一键生成完全符合 OpenAI/Gemini 标准协议的参数描述！
+
+注意看 "required"： 因为 model、temperature、stream、max_tokens 都有默认值 default=...，所以 Pydantic 非常智能地发现只有 messages 是必填项，因此自动在最外层标注了 "required": ["messages"]！大模型看到之后，就知道调用这个函数时哪些参数是必须传的，哪些是可以省略的。
+'''
 
 
 # ======================== 3. 嵌套模型 ========================

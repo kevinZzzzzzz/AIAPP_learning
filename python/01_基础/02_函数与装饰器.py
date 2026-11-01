@@ -116,7 +116,7 @@ def repeat(times: int):
         return wrapper
     return decorator
 
-@repeat(3)
+@repeat(3)  # greet = repeat(3, greet)
 def greet(name: str) -> str:
     print(f"Hi {name}!")
     return f"Done: {name}"
@@ -169,6 +169,10 @@ const repeat = (times) => {
 def timeit(func: Callable) -> Callable:
     """测量函数执行时间 —— 调试 LLM 调用延迟时极其有用"""
     @functools.wraps(func)
+    # """
+    #     作用：保留原函数的元信息（元数据拷贝）。
+    #         为什么需要它？ 如果没有这行代码，当别人使用被装饰后的函数时，执行 fn.__name__（函数名）会变成 'wrapper"，函数的文档注释 fn.__doc__ 也会丢失。 @functools.wraps(func) 能把原函数的函数名、注释、参数列表等信息完美复制给内部的 wrapper，让外界察觉不到函数被“包装”过。
+    # """
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         start = time.perf_counter()
         result = func(*args, **kwargs)
@@ -177,7 +181,13 @@ def timeit(func: Callable) -> Callable:
         return result
     return wrapper
 
-
+@timeit
+def call_openai_api(prompt: str):
+    # 模拟网络请求耗时
+    time.sleep(1.2)
+    return f"你好，我是大模型！{prompt}"
+call_openai_api(123)
+print(call_openai_api.__name__, '@functools.wraps')
 # ======================== 9. 实战：重试装饰器 ========================
 
 import time as _time
@@ -216,15 +226,18 @@ def expensive_embedding(text: str) -> float:
 
 class Singleton:
     """让一个类变成单例模式"""
-    _instances: dict = {}
+    _instances: dict = {}  # 静态变量（全局缓存池）：存储每个类的唯一实例
     
     def __init__(self, cls):
         functools.update_wrapper(self, cls)
-        self._cls = cls
+        self._cls = cls   # 把被装饰的原始 class（如 AppConfig）存起来
     
     def __call__(self, *args, **kwargs):
+        # 当外界写 AppConfig() 时，触发 __call__ 执行
         if self._cls not in self._instances:
+            # 如果还没创建过，就调用原始类实例化一个，存进字典
             self._instances[self._cls] = self._cls(*args, **kwargs)
+        # 永远返回字典里缓存的同一个实例
         return self._instances[self._cls]
 
 

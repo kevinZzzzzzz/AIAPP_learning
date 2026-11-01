@@ -55,7 +55,7 @@ def main():
     # 逻辑运算符不同：
     # JS: &&, ||, !
     # Python: and, or, not (非常语义化)
-    if is_active and not is_deleted:
+    if is_active and not is_deleted:   # if is_active && !is_deleted
         print("用户状态正常")
 
 
