@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # 1. Go 后端服务
+  app:
+    build:
+      context: ..
+      dockerfile: 05_打包与部署运维/Dockerfile
+    container_name: go_backend_app
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - GIN_MODE=release
+      - DB_DSN=root:root_pass_2026@tcp(mysql:3306)/go_db?charset=utf8mb4&parseTime=True&loc=Local
+      - REDIS_ADDR=redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+    networks:
+      - go_fullstack_net
+
+  # 2. Redis 缓存服务
+  redis:
+    image: redis:7.2-alpine
+    container_name: go_backend_redis
+    restart: always
+    command: redis-server --appendonly yes --requirepass ""
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - go_fullstack_net
+
+  # 3. MySQL 数据库服务
+  mysql:
+    image: mysql:8.0
+    container_name: go_backend_mysql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pass_2026
+      MYSQL_DATABASE: go_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - go_fullstack_net
+
+volumes:
+  redis_data:
+  mysql_data:
+
+networks:
+  go_fullstack_net:
+    driver: bridge
+
