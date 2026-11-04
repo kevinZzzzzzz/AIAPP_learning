@@ -35,7 +35,7 @@ async def get_user(user_id: int):
         raise HTTPException(status_code=404, detail="用户不存在")
     return {"user_id": user_id, "name": users[user_id]}
 
-# ======================== 4. 查询参数 ========================
+# ======================== 4.  查询参数 ========================
 
 @app.get("/search")
 async def search(
