@@ -28,7 +28,7 @@ html = """
         </form>
         <div id="messages" style="margin-top: 20px; font-family: monospace; white-space: pre-wrap;"></div>
         <script>
-            var ws = new WebSocket("ws://localhost:8000/ws/chat");
+            var ws = new WebSocket("ws://192.168.31.135:8000/ws/chat");
             var messageBox = document.getElementById('messages');
             
             ws.onmessage = function(event) {
