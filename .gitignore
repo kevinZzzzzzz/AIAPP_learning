@@ -1,4 +1,5 @@
 node_modules
 .env
 .env.example
-venv
+# 忽略所有目录下的 venv 文件夹
+venv/
