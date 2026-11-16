@@ -46,7 +46,7 @@ async def basic_chat():
     content = response.choices[0].message.content
     
     usage = response.usage
-    print(f"回复: {coqwntent}")
+    print(f"回复: {content}")
     print(f"Token 用量： prompt={usage.prompt_tokens},"
         f"completion={usage.completion_tokens}",
         f"total={usage.total_tokens}"
@@ -211,7 +211,120 @@ async def structured_output():
         print(f"JSON 解析失败，原始输出: {content}")
 
 
+# ======================== 8. Function Calling 基础 ========================
+async def function_calling_basic():
+    """Function Calling —— 让 LLM 调用外部工具
+    
+    这是 Agent 的核心机制！后面 07_Agent 章节会详讲
+    """
+    client = create_client()
+    
+    # 定义工具（函数）
+    tools = [
+        {
+            "type": "function",
+            "function": {
+                "name": "get_weather",
+                "descrption": "获取指定城市的天气信息",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "city": {
+                            "type": "string",
+                            "description": "城市名称，例如：上海、北京",
+                        },
+                        "unit": {
+                            "type": "string",
+                            "enum": ["celsius", "fahrenheit"],
+                            "description": "温度单位"
+                        },
+                    },
+                    "required": ["city"]
+                }
+            }
+        }
+    ]
 
+    response = await client.chat.completions.create(
+        model=api_model_name,
+        messages=[
+            {
+                "role": "user", "content": "北京今天天气怎么样"
+            }
+        ],
+        tools=tools,
+        tool_choice="auto"  # LLM 自动决定是否调用工具
+    )
+
+    message = response.choices[0].message
+    print(f"tool_calls{message.tool_calls}")
+
+    if message.tool_calls:
+        for tool_call in message.tool_calls:
+            print(f"tool_call----{tool_call}")
+            func_name = tool_call.function.name
+            print(f"func_name----{func_name}")
+            func_args = json.loads(tool_call.function.arguments)
+            print(f"LLM 想调用: {func_name}({func_args})")
+
+            # 模拟工具执行
+            if func_name == "get_weather":
+                result = f"{func_args['city']}今天晴天，25℃"
+                print(f"LLM 想调用: {message.model_dump()}")
+                # 把工具结果返回给 LLM
+                messages = [
+                    {"role": "user", "content": "北京今天天气怎么样？"},
+                    message.model_dump(),  # 包含 tool_calls 的消息
+                    {
+                        "role": "tool",
+                        "tool_call_id": tool_call.id,
+                        "content": result
+                    }
+                ]
+                response2 = await client.chat.completions.create(
+                    model=api_model_name,
+                    messages=messages
+                )
+                print(f"最终回复: {response2.choices[0].message.content}")
+    else:
+        print(f"LLM 直接回复: {message.content}")
+
+
+# ======================== 9. Token 计算（tiktoken） ========================
+import tiktoken
+def count_tokens(text: str, model: str = api_model_name):
+    encoding = tiktoken.encoding_for_model(model)
+    return len(encoding.encode(text))
+
+text = "Hello World! 你好世界！"
+# print(f"Token 数: {count_tokens(text)}")
+
+
+# ======================== 10. 错误处理最佳实践 ========================
+import asyncio
+async def safe_chat(prompt: str, max_retries: int = 3) -> Optional[str]:
+    client = create_client()
+    for attemp in range(max_retries):
+        try:
+            response = await client.chat.completions.create(
+                model=api_model_name,
+                messages=[{"role": "user", "content": prompt}],
+                timeout=30,
+            )
+            return response.choices[0].message.content
+        
+        except Exception as e:
+            error_msg = str(e)
+            if "rate_limit" in error_msg.lower():
+                wait = 2 ** attemp
+                print(f"频率限制，等待{wait}秒。。。")
+                await asyncio.sleep(wait)
+            elif attemp == max_retries - 1:
+                print(f"重试{max_retries}次后仍然失败： {e}")
+                return None
+            else:
+                await asyncio.sleep(1)
+    return  None
 
 async def main():
     print("=" * 60)
@@ -225,7 +338,10 @@ async def main():
         # await demo_system_prompt()
         # await demo_sampling_params()
         # await streaming_chat()
-        await structured_output()
+        # await structured_output()
+        # await function_calling_basic()
+        result = await safe_chat("五言绝句夸我帅")
+        print(f"{result}")
     except Exception as e:
         print(f"跳过（需要API KEY）: {e}")
 
