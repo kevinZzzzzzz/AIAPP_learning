@@ -47,8 +47,8 @@ async def basic_chat():
     
     usage = response.usage
     print(f"回复: {content}")
-    print(f"Token 用量： prompt={usage.prompt_tokens},"
-        f"completion={usage.completion_tokens}",
+    print(f"Token 用量： prompt={usage.prompt_tokens},\n"
+        f"completion={usage.completion_tokens}\n",
         f"total={usage.total_tokens}"
     )
 
@@ -333,15 +333,15 @@ async def main():
 
     try:
         print("\n1.基本会话")
-        # await basic_chat()
+        await basic_chat()
         # await mutil_turn_chat()
         # await demo_system_prompt()
         # await demo_sampling_params()
         # await streaming_chat()
         # await structured_output()
         # await function_calling_basic()
-        result = await safe_chat("五言绝句夸我帅")
-        print(f"{result}")
+        # result = await safe_chat("五言绝句夸我帅")
+        # print(f"{result}")
     except Exception as e:
         print(f"跳过（需要API KEY）: {e}")
 
