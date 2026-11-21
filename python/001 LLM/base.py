@@ -121,7 +121,8 @@ async def demo_system_prompt():
                 {"role": "user", "content": user_input}
             ]
         )
-        print(response.choices[0].message.content)
+        content = response.choices[0].message.content
+        print(content)
 
 
 # ======================== 5. 控制输出格式（Temperature / Top-P） ========================
@@ -159,7 +160,7 @@ async def streaming_chat():
         messages=[
             {"role": "user", "content": "用五言夸我帅"},
         ],
-        stream=True
+        stream=True # 流式关键参数
     )
 
     print("ChatGpt 正在答复: ", end="", flush=True)
@@ -231,7 +232,7 @@ async def function_calling_basic():
                     "properties": {
                         "city": {
                             "type": "string",
-                            "description": "城市名称，例如：上海、北京",
+                            "description": "城市名称，例如：上海、北京、深圳、广州、汕头",
                         },
                         "unit": {
                             "type": "string",
@@ -249,7 +250,7 @@ async def function_calling_basic():
         model=api_model_name,
         messages=[
             {
-                "role": "user", "content": "北京今天天气怎么样"
+                "role": "user", "content": "深圳今天天气怎么样"
             }
         ],
         tools=tools,
@@ -257,20 +258,20 @@ async def function_calling_basic():
     )
 
     message = response.choices[0].message
-    print(f"tool_calls{message.tool_calls}")
+    print(f"tool_calls{message.tool_calls}\n")
 
     if message.tool_calls:
         for tool_call in message.tool_calls:
-            print(f"tool_call----{tool_call}")
+            print(f"tool_call----{tool_call}\n")
             func_name = tool_call.function.name
-            print(f"func_name----{func_name}")
+            print(f"func_name----{func_name}\n")
             func_args = json.loads(tool_call.function.arguments)
-            print(f"LLM 想调用: {func_name}({func_args})")
+            print(f"LLM 想调用: {func_name}({func_args})\n")
 
             # 模拟工具执行
             if func_name == "get_weather":
                 result = f"{func_args['city']}今天晴天，25℃"
-                print(f"LLM 想调用: {message.model_dump()}")
+                print(f"LLM 想调用: {message.model_dump()}\n")
                 # 把工具结果返回给 LLM
                 messages = [
                     {"role": "user", "content": "北京今天天气怎么样？"},
@@ -285,19 +286,20 @@ async def function_calling_basic():
                     model=api_model_name,
                     messages=messages
                 )
-                print(f"最终回复: {response2.choices[0].message.content}")
+                print(f"最终回复: {response2.choices[0].message.content}\n")
     else:
-        print(f"LLM 直接回复: {message.content}")
+        print(f"LLM 直接回复: {message.content}\n")
 
 
 # ======================== 9. Token 计算（tiktoken） ========================
 import tiktoken
 def count_tokens(text: str, model: str = api_model_name):
-    encoding = tiktoken.encoding_for_model(model)
+    # encoding = tiktoken.encoding_for_model(model)
+    encoding = tiktoken.get_encoding("cl100k_base")
     return len(encoding.encode(text))
 
 text = "Hello World! 你好世界！"
-# print(f"Token 数: {count_tokens(text)}")
+print(f"Token 数: {count_tokens(text)}")
 
 
 # ======================== 10. 错误处理最佳实践 ========================
@@ -333,15 +335,15 @@ async def main():
 
     try:
         print("\n1.基本会话")
-        await basic_chat()
+        # await basic_chat()
         # await mutil_turn_chat()
         # await demo_system_prompt()
         # await demo_sampling_params()
         # await streaming_chat()
         # await structured_output()
         # await function_calling_basic()
-        # result = await safe_chat("五言绝句夸我帅")
-        # print(f"{result}")
+        result = await safe_chat("五言绝句夸我帅")
+        print(f"{result}")
     except Exception as e:
         print(f"跳过（需要API KEY）: {e}")
 
