@@ -118,7 +118,29 @@ similarities = model.similarity(embeddings, embeddings)
 print(similarities)
 """
 # ======================== 6. 语义搜索 Demo ========================
+class SimpleSemanticSearch:
+    """最简单的语义搜索引擎 —— 理解 RAG 检索的本质"""
+    def __init__(self):
+        self.documents: list[str] = []
+        self.embeddings: list[list[float]] = []
+    
+    def add_documents(self, docs: list[str], embeddings: list[list[float]]):
+        """添加文档及其 Embedding"""
+        self.documents.extend(docs)
+        self.embeddings.extend(embeddings)
+    def search(self, query_embedding: list[float], top_k: int = 3) -> list[tuple[str, float]]:
+        """搜索与 query 最相似的 top_k 个文档"""
+        if not self.embeddings:
+            return []
 
+        scored = [
+            (doc, cosine_similarity(query_embedding, emb))
+            for doc, emb in zip(self.documents, self,embeddings)
+        ]
+
+        scored.sort(key=lambda x: x[1], reverse=True)
+
+        return scored[:top_k]
 
 
 if __name__ == "__main__":
