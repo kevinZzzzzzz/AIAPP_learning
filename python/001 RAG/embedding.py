@@ -135,12 +135,74 @@ class SimpleSemanticSearch:
 
         scored = [
             (doc, cosine_similarity(query_embedding, emb))
-            for doc, emb in zip(self.documents, self,embeddings)
+            for doc, emb in zip(self.documents, self.embeddings)
         ]
 
         scored.sort(key=lambda x: x[1], reverse=True)
 
-        return scored[:top_k]
+        return scored
+
+def demo_semantic_search():
+    """演示语义搜索"""
+    # 模拟文档和 Embedding
+    docs = [
+        "Python 是一种高级编程语言，广泛用于 AI 开发",
+        "JavaScript 主要用于 Web 前端开发",
+        "机器学习是人工智能的一个子领域",
+        "React 是一个流行的前端框架",
+        "Transformer 架构是 LLM 的核心基础",
+    ]
+
+    # 模拟 Embedding（实际应用中使用真实模型）
+    embeddings = [
+        [0.8, 0.6, 0.1, 0.0, 0.2],  # Python + AI
+        [0.2, 0.1, 0.9, 0.7, 0.1],  # JS + Web
+        [0.7, 0.8, 0.0, 0.0, 0.3],  # ML + AI
+        [0.1, 0.0, 0.8, 0.9, 0.0],  # React + 前端
+        [0.6, 0.7, 0.1, 0.0, 0.5],  # Transformer + LLM
+    ]
+
+    engine = SimpleSemanticSearch()
+    engine.add_documents(docs, embeddings)
+
+    queries = [
+        ([0.9, 0.5, 0.0, 0.0, 0.1], "AI 编程相关"),
+        ([0.0, 0.0, 0.9, 0.8, 0.0], "前端开发相关"),
+    ]
+
+    for query_vec, desc in queries:
+        print(f"\n查询：{desc}")
+        results = engine.search(query_vec, top_k=1)
+        for doc, scorse in results:
+            print(f" [{scorse:.3f}] {doc}")
+
+# ======================== 7. 实战：文档切片 + Embedding ========================
+def chunk_text(text: str, chunk_size: int = 300, overlap: int = 50) -> list[str]:
+    """简单文档切片 —— RAG 的第一步
+    
+    实际生产建议用 LangChain 的 RecursiveCharacterTextSplitter
+    """
+    chunks = []
+    start = 0
+    while start < len(text):
+        end = min(start + chunk_size, len(text))
+        chunks.append(text[start:end])
+        start += (chunk_size - overlap)  # 有重叠地滑动
+    return chunks
+
+def demo_chunk_and_embed():
+    """演示文档切片 + Embedding 的完整流程"""
+    
+    document = """
+    Python 是一种解释型、面向对象的高级编程语言。它由 Guido van Rossum 
+    于 1991 年首次发布。Python 的设计哲学强调代码的可读性和简洁的语法。
+    
+    Python 在数据科学和人工智能领域应用广泛。TensorFlow、PyTorch、Scikit-learn 
+    等机器学习框架都基于 Python。OpenAI 的 GPT 系列模型的 API 也优先支持 Python。
+    
+    Python 的生态系统非常丰富，包括 Web 开发框架 Django 和 FastAPI、
+    数据分析库 Pandas、科学计算库 NumPy、以及可视化库 Matplotlib。
+    """
 
 
 if __name__ == "__main__":
