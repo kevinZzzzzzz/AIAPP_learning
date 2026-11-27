@@ -227,6 +227,29 @@ async def demo_chunk_and_embed():
     print(f"{embeddings}")
 
 # ======================== 8. Token 数与成本的估算 ========================
+def estimate_embedding_cost(texts: list[str], model: str = "text-embedding-3-small"):
+    import tiktoken
+    encoding = tiktoken.encoding_for_model("gpt-4o-mini")
+    total_tokens = sum(len(encoding.encode(text)) for text in texts)
+
+    pricing = {
+        "text-embedding-3-small": 0.02 / 1_000_000,   # $0.02/百万token
+        "text-embedding-3-large": 0.13 / 1_000_000,   # $0.13/百万token
+        "text-embedding-ada-002": 0.10 / 1_000_000,   # $0.10/百万token
+    }
+
+    cost_per_m = pricing.get(model, 0.02 / 1_000_000)
+    cost = total_tokens * cost_per_m
+    
+    print(f"模型: {model}")
+    print(f"总 tokens: {total_tokens}")
+    print(f"预估成本: ${cost:.6f}")
+    return cost
+
+
+
+
+
 if __name__ == "__main__":
     print("=== Embedding 入门 Demo ===\n")
     
@@ -243,3 +266,7 @@ if __name__ == "__main__":
     
     print("\n3. 文档切片 + Embedding 流程")
     asyncio.run(demo_chunk_and_embed())
+
+
+    print("\n4.Token 数与成本的估算")
+    estimate_embedding_cost(["Python 编程语言", "今天天气真好", "Python 开发"])
